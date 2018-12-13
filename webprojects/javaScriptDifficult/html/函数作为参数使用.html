@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function f1(fn) {
+        console.log("我是一个函数");
+        fn();
+    }
+    f1(function () {
+        console.log("我是匿名函数");
+    });//调用f1的同时，也把函数传进去作为参数使用了
+    function f2() {
+        console.log("我是f2的函数");
+    }
+    f1(f2);
+</script>
+</body>
+</html>

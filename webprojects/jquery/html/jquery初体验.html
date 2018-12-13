@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height: 200px;
+            border: 1px solid #cccccc;
+            background-color: red;
+            margin: 10px auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--引入jquery框架-->
+<script src="jquery-3.3.1.js"></script>
+<script>
+    // 入口函数，相当于页面加载完毕后执行
+   $(document).ready(function () {
+       $("#btn1").click(function () {
+           $("div").slideDown(3000);
+       });
+       $("#btn2").click(function () {
+           $("div").text("我是内容");
+       });
+   });
+</script>
+<input type="button" value="显示div" id="btn1">
+<input type="button" value="显示内容" id="btn2">
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>银行汇款手续费</title>
+	<style>
+	label{
+		width: 100px;
+		text-align: right;
+		display: block;
+		float: left;
+		
+	}
+	section{
+		width: 260px;
+		text-align: center;
+	}
+	</style>
+	<script>
+	function calc()
+	{
+		var Remittance=document.myForm.txtRemittance.value;
+		var Fee=Remittance*0.01;
+		if (Fee<2)
+		 {
+		 	Fee=2;
+		 }
+		 document.myForm.txtFee.value=Fee;
+	}
+	</script>
+</head>
+<body>
+	<section>
+	<form name="myForm" action="" method="get">
+	<p><label>汇款金额:</label><input type="text" name="txtRemittance"/></p>
+	<p><label>手续费:</label><input type="text" name="txtFee" readonly/></p>
+	<p><input type="button" value="确定" onclick="calc()"></p>
+	</form>
+	</section>
+</body>
+</html>

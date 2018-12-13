@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>银行汇款手续费</title>
+<style>
+	label{
+		width: 100px;
+		text-align: right;
+		display: block;
+		float:left;
+	}
+	section{
+		width: 260px;
+		text-align: center;
+	}
+</style>
+<script>
+function calc()
+{
+	var one=document.myform.monely.value;
+	var fee=one*0.01;
+	if (fee<2)
+	 {
+	 	fee=2;
+	 }
+	 document.myform.spentmonely.value=fee;
+}
+</script>
+</head>
+<body>
+	<section>
+		<form name="myform" action="" method="get">
+		<p><label>汇款金额：</label><input style="text" name="monely"></p>
+		<p><label>手续费：</label><input style="text" name="spentmonely" readonly></p>	
+	<p><input type="button" value="确定" onclick="calc()"></p>
+		</form>
+	</section>
+</body>
+</html>

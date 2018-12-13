@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Student(name,age,sex) {
+        this.name=name;
+        this,age=age;
+        this.sex=sex;
+    }
+    Student.prototype={//属性可以对象点出来
+        constructor:Student,//手动添加构造器的指向
+        height:"188",
+        weight:"55kg",
+        eat:function () {
+            console.log("我们都喜欢吃水果");
+        },
+        play:function () {
+            console.log("我们都喜欢打篮球");
+        }
+    };
+    var stu=new Student("罗建辉",18,"男");
+    stu.eat();
+    stu.play();
+    console.dir(stu);
+    console.dir(Student);
+</script>
+</body>
+</html>

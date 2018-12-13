@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(name,age) {
+        this.name=name;
+        this.age=age;
+        // 原型的引入，数据共享，节省空间
+        Person.prototype.eat=function () {
+            console.log(this.name+"中午吃红烧肉");
+        }
+    }
+    var per1=new Person("罗建辉",18);
+    var per2=new Person();
+    console.log(per1.eat==per2.eat);
+    console.log(per1.name);
+    per1.eat();
+</script>
+</body>
+</html>

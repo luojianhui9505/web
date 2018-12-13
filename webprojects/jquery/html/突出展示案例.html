@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        body {
+            background-color: black;
+        }
+        .dv {
+            margin: 100px auto;
+            width: 630px;
+            height: 390px;
+            padding: 10px 0 0 10px;
+            border: 1px solid #cccccc;
+            overflow: hidden;
+        }
+        ul {
+            list-style: none;
+            border: 0;
+            display:block ;
+        }
+        .dv ul li {
+            float: left;
+            margin: 0 10px 10px 0;
+        }
+        img {
+            display: block;
+            border: 0;
+        }
+
+        </style>
+</head>
+<body>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    // 入口函数
+    $(function () {
+        $(".dv>ul>li").mouseenter(function () {
+            $(this).css("opacity",1).siblings("li").css("opacity",0.4);
+        });
+        $(".dv").mouseleave(function () {
+           $(this).find("li").css("opacity",1);
+        });
+    });
+</script>
+<div class="dv">
+    <ul>
+        <li><a href="#"><img src="images/01.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/02.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/03.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/04.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/05.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/06.jpg" alt=""></a></li>
+    </ul>
+</div>
+</body>
+</html>

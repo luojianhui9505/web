@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <!--当存在框架冲突的时候，可以重新找一个变量把$符号给它，又可以当做一个jqurey对象使用-->
+        <!--例如-->
+        <script src="jquery-3.3.1.js"></script>
+        <script>
+            // 现在就相当$$就是$
+            // 也可以直接用jQuery
+            var $$=$.noConflict();
+        </script>
+</body>
+</html>

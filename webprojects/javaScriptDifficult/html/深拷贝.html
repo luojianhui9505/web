@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var obj1={
+        name:"大黄",
+        age:16,
+        sex:"男",
+        car:["奔驰","宝马","兰博基尼","特斯拉","大众"],
+        dog:{
+            name:"小狗",
+            sex:"男",
+            age:16,
+            color:"红色"
+        }
+    };
+    obj2={};
+    function extend(a,b) {
+        for(var key in a) {
+            // 把对象a里里面所有属性的值存储在变量item中
+            var item = a[key];
+            // 循环遍历item中的每一个属性的值，判断是不是数组
+            if (item instanceof Array) {
+                // 在b的对象中添加一个新的属性，并且这个属性也是数组
+                b[key] = [];
+                // 调用方法，把a对象中的属性值一个个复制到b对象这个数组属性中
+                extend(item, b[key]);
+            } else if(item instanceof Object){
+                // 如果是对象类型，那么在b对象中添加一个                                                              属性，是一个空对象
+                b[key]={};
+                // 调用方法，把a对象中的属性值一个一个复制到b对象的这个属对象中
+                extend(item,b[key]);
+            }else{
+                b[key]=item;
+            }
+        }
+    }
+    extend(obj1,obj2);
+    console.dir(obj1);
+    console.log(obj2);
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      * {
+          padding: 0;
+          margin: 0;
+      }
+      ul {
+          width: 1000px;
+          /*height: 1000px;*/
+          margin: 100px auto;
+      }
+        ul li{
+            list-style: none;
+           float: left;
+            position: relative;
+            margin-left: 20px;
+        }
+        img {
+            width: 300px;
+            height: auto;
+        }
+        input {
+            position: absolute;
+            bottom: -20px;
+            display: block;
+            width: 60px;
+            left: 50%;
+            margin-left: -30px;
+
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><img src="../images/1.jpg" alt=""><input type="button" value="赞(0)" id="btn1"></li>
+    <li><img src="../images/2.jpg" alt=""><input type="button" value="赞(0)" id="btn2"></li>
+    <li><img src="../images/3.jpg" alt=""><input type="button" value="赞(0)" id="btn3"></li>
+</ul>
+<script>
+    var btnObjs=document.getElementsByTagName("input");
+    function getValue() {
+        var value=1;
+        return function () {
+          this.value="赞（"+(value++)+")";
+        }
+    }
+    for (var i=0;i<btnObjs.length;i++){
+        btnObjs[i].onclick=getValue();
+    } 
+</script>
+</body>
+</html>

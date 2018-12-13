@@ -1,0 +1,104 @@
+header {
+	width: 1300px;
+	height: 100px;
+	margin: 0 auto;
+	/*background-color: pink;*/
+	padding-top: 30px;
+}
+.logo {
+		width: 195px;
+		height: 42px;
+		/*background-color: #ccc;*/
+		float: left;
+}
+.logo a {
+	width: 195px;
+	height: 100px;
+	display: block;
+	background: url(../images/logo.png) no-repeat;
+	text-indent: -999px;
+	overflow: hidden;
+}
+nav {
+	float: left;
+	margin-left: 20px;
+}
+nav li {
+	float: left;
+	margin-left: 25px;
+	height: 40px;
+	line-height: 40px;
+}
+nav li a {
+	display: block;
+	height: 40px;
+	font-size: 18px;
+	padding: 0 10px;
+	color: black;
+	}
+	nav li a:hover {
+		border-bottom: 2px solid #00a4ff;
+	}
+	.search {
+		width: 410px;
+		height: 40px;
+		background-color: pink;
+		float: left;
+		margin-left: 140px;
+	}
+	.search input {
+		width: 361px;
+		height: 40px;
+		/*background-color: purple;*/
+		border: 1px solid #00a4ff;
+		outline: none;
+		float: left;
+	}
+	.search button {
+		width: 49px;
+		height: 40px;
+		border: 0;
+		outline: none;
+		background: url(../images/fa-search.png) no-repeat;
+	}
+	.personal {
+		float: right;
+		height: 40px;
+		line-height: 40px;
+	}
+	.personal dt, .personal dd {
+		float: left;
+		font-size: 12px;
+	}
+	.personal s {
+		position: relative;
+		padding:0 20px;
+
+	}
+	/*.personal s img {
+		line-height: 40px;
+		text-align: center;*/
+	}
+	.personal s::before {
+		content: "";
+		display: block;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		position: absolute;
+		background-color: red;
+		top: 0;
+		right: 15px;
+	}
+	.personal span {
+		font-size: 12px;
+	}
+	.personal span img {
+		
+		margin-right: 10px;
+		transition:all 0.6s;
+		border-radius: 50%;
+	}
+	.personal span img:hover {
+			transform:rotate(-360deg);
+	}
