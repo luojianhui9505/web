@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            height: 300px;
+            width: 300px;
+            background-color: deeppink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="渐变" id="btn">
+<div id="dv"></div>
+<script>
+    document.getElementById("btn").onclick=function () {
+        var opacity=10;//opacity改变元素的不透明度
+        var timed=setInterval(function () {
+            opacity--;
+            document.getElementById("dv").style.opacity=opacity/10;
+            if (opacity<=0){
+               window.clearInterval(timed)
+            }
+
+        },200);
+    }
+</script>
+</body>
+</html>

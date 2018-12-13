@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: url("images/1.jpg")  top center no-repeat;
+        }
+        #mask {
+            background-color: rgba(255,255,255,0.2);
+            height: 200px;
+           text-align: center;
+        }
+        #mask img {
+            width: 200px;
+            margin-top: 40px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body id="bod">
+<div id="mask">
+    <img src="images/1.jpg" alt="">
+    <img src="images/2.jpg" alt="">
+    <img src="images/3.jpg" alt="">
+</div>
+<script src="../js/common.js"></script>
+<script>
+    var imgs=myCommon("mask").children;
+    for (var i=0;i<imgs.length;i++){
+        imgs[i].onclick=function () {
+            myCommon("bod").style.backgroundImage="url("+this.src+")"
+        }
+    }
+</script>
+</body>
+</html>

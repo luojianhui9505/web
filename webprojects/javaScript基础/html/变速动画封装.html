@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="移动400" id="btn1">
+<input type="button" value="移动800" id="btn2">
+<div id="dv"></div>
+<script>
+    document.getElementById("btn1").onclick=function () {
+        animate(document.getElementById("dv"),400);
+    };
+    document.getElementById("btn2").onclick=function () {
+        animate(document.getElementById("dv"),800);
+    };
+    function animate(element,target) {
+        clearInterval(element.timeId);
+        element.timeId=setInterval(function () {
+            var current=element.offsetLeft;
+            var step=(target-current)/10;
+            step=step>0?Math.ceil(step):Math.floor(step);
+            current+=step;
+            element.style.left=current+"px";
+            if(current==target){
+                clearInterval(element.timeId);
+            }
+            console.log("目标位置："+target+"当前位置："+current+"每次移动步数："+step);
+        },20)
+    }
+</script>
+</body>
+</html>

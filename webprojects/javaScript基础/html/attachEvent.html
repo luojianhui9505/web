@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--可以为一个按钮添加多个响应事件,火狐和谷歌不支持，ie8支持-->
+<input type="button" value="按钮" id="btn">
+<script>
+   document.getElementById("btn").attachEvent("onclick",function () {
+       console.log("哦");//谷歌火狐打开时会报错，ie8支持
+   });
+</script>
+</body>
+</html>

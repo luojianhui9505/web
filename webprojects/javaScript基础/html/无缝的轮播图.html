@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #inner {
+            overflow: hidden;
+            width: 730px;
+            height: 454px;
+            position: relative;
+            margin: 200px auto;
+        }
+        #inner ul {
+            width: 5110px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #inner ul li {
+            list-style: none;
+            float: left;
+        }
+        img {
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <div id="inner">
+        <ul>
+            <li><a href="#"><img src="easeMap/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/6.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/1.jpg" alt=""></a></li>
+        </ul>
+    </div>
+    <script src="../js/common.js"></script>
+    <script>
+        var current=0;
+        function f1() {
+            var ulObjs=myCommon("inner").children[0];
+            current-=10;//往左移动所以是减
+            if (current<-4380){
+                ulObjs.style.left=0+"px";
+                current=0
+            }else{
+                ulObjs.style.left=current+"px";
+            }
+        }
+      var timeId=setInterval(f1,20);
+        myCommon("inner").onmouseover=function () {
+    clearInterval(timeId);
+};
+        myCommon("inner").onmouseout=function () {
+            timeId=setInterval(f1,20);
+        }
+    </script>
+</body>
+</html>

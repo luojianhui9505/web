@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        .box {
+            width: 400px;
+            height: 400px;
+            border: 1px solid pink;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        .hd {
+            height:50px;
+        }
+        .hd span {
+            display: inline-block;
+            width: 90px;
+            text-align: center;
+            line-height: 50px;
+            margin-left: 5px;
+            background-color: #db7078;
+            cursor: pointer;
+        }
+        .hd .current {
+            background-color: #cc0000;
+        }
+        .bd {
+            /*height: 350px;*/
+            background-color: #cc0000;
+        }
+        .bd  li {
+            height: 350px;
+            display: none;
+        }
+        .bd li img {
+            height: 350px;
+            width: 400px;
+        }
+        .bd .current {
+            display: block;
+        }
+    </style>
+</head>
+<script>
+    // 在一个大盒子里面放两个盒子，分别为头部盒子和底部盒子，在上面盒子放入导航栏，下面盒子放内容
+</script>
+<body>
+<div id="bigBox" class="box">
+    <div class="hd" >
+        <span class="current">新闻</span>
+        <span>视频</span>
+        <span>地图</span>
+        <span>贴吧</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current"><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/11.jpg" alt=""></li>
+        </ul>
+    </div>
+</div>
+<script src="../js/common.js"></script>
+<script>
+    // 获取最外面的div
+    var outerMostDiv=myCommon("bigBox");
+    // 获取第一个div
+    var firstDiv=document.getElementsByClassName("hd");
+    // 获取第二个div
+    var srcondDiv=document.getElementsByClassName("bd")
+    // 获取所有的span
+    var allSpan=document.getElementsByTagName("span");
+    var allLi=document.getElementsByTagName("li");
+    // 循环遍历为所有的span注册点击事件
+    for (var i=0;i<allSpan.length;i++){
+        // 为所有的span标签设置索引
+        allSpan[i].setAttribute("index",i);//这里是关键，也不容易想到
+        allSpan[i].onclick=function () {
+            for (var j=0;j<allSpan.length;j++){
+                // 先移除所有的span标签的类样式
+                allSpan[j].removeAttribute("class");
+
+            }
+            // 当前点击的span的类样式设置为current
+            this.className="current";
+            // 获取当前点击的span里面的自定义属性index的值
+            var currentIndex=this.getAttribute("index");
+            for (var k=0;k<allLi.length;k++){
+                allLi[k].removeAttribute("class");
+            }
+            // 根据当前点击的span获取的index找到对应的li标签，为该li标签设置类样式为current
+            allLi[currentIndex].className="current"//这里也是关键
+        };
+    }
+</script>
+</body>
+</html>

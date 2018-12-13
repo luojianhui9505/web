@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ul {
+            width: 150px;
+            height: 30px;
+            text-align:center ;
+            line-height: 30px;
+            margin: 100px auto;
+        }
+        .ul li {
+            float: left;
+            font-size: 30px;
+            color: black;
+            cursor: pointer;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+       $(".ul li").on("mouseenter",function () {
+           $(this).text("★").prevAll().text("★");
+           $(this).nextAll().text("☆");
+           // 也可以这样写:end()方法，回到前一次的那一个状态
+           // $(this).text("★").prevAll().text("★").end().nextAll().text("☆");
+       }) ;
+        $(".ul").on("mouseleave",function () {
+            $(this).children().text("☆");
+            $(".current").text("★").prevAll().text("★");
+        }) ;
+        $(".ul li").on("click",function () {
+            $(this).addClass("current").siblings().removeClass("current");
+        });
+
+    });
+</script>
+    <ul class="ul">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+</body>
+</html>

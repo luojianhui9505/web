@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        .box {
+            width: 300px;
+            height: 400px;
+            border: 1px solid #cccccc;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            /*上右下左*/
+            padding: 5px 20px 5px 5px;
+        }
+        .scroll {
+            width: 20px;
+            height: 100%;
+            position:absolute;
+            top: 0;
+            right: 0;
+            background-color: #db7078;
+        }
+        .bar {
+            height: 100px;
+            width: 100%;
+            /*脱标元素就是以父级元素为准*/
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #e5d790;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<!--大盒子-->
+<div id="box" class="box">
+    <!--装内容的盒子-->
+    <div id="content" class="content">
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+        苦心人,天不负,卧薪尝胆,三千越甲可吞吴.山重水复疑无路,柳暗花明又一村.乘风破浪会有时,直挂云帆济沧海;
+    </div>
+    <!--装滚动条的盒子-->
+    <div id="scroll" class="scroll">
+        <!--滚动条-->
+        <div id="bar" class="bar"></div>
+    </div>
+</div>
+<script>
+    var box=document.getElementById("box");
+    var content=document.getElementById("content");
+    var scroll=document.getElementById("scroll");
+    var bar=document.getElementById("bar");
+    // 滚动条的高随着内容在逐渐变化
+    // 滚动条的高/装滚动条盒子的高=box的高/box里面内容的高
+    // 滚动条的高=装滚动条盒子的高*box的高/box里面内容的高
+    var barHeight=scroll.offsetHeight*box.offsetHeight/content.offsetHeight;
+    bar.style.height=barHeight+"px";
+   bar.onmousedown=function (e) {
+        var spaceY=e.clientY-bar.offsetTop;
+        document.onmousemove=function (e) {
+            var y=e.clientY-spaceY;
+            y=y<0?0:y;
+            y=y>scroll.offsetHeight-bar.offsetHeight?scroll.offsetHeight-bar.offsetHeight:y;
+            bar.style.top=y+"px";
+            window.getSelection?window.getSelection().removeAllRanges():document.selection.empty();
+            // 滚动条的移动距离/滚动条的最大移动距离=内容的移动距离/内容的最大移动距离
+            // 内容的移动距离=滚动条的移动距离*内容的最大移动距离/滚动条的最大移动距离
+            var contentMoveY=y*(content.offsetHeight-box.offsetHeight)/(scroll.offsetHeight-bar.offsetHeight);
+            content.style.marginTop=-contentMoveY+"px";
+        }
+    };
+    document.onmouseup=function () {
+        document.onmousemove=null;
+    }
+</script>
+</body>
+</html>

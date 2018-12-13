@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #cccccc;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<div id="dv"></div>
+<script src="../js/common.js"></script>
+<script>
+    myCommon("btn").onclick=function () {
+        if (!myCommon("btn2")){
+            // myCommon("dv").removeChild(myCommon("btn2"));
+            var obj=document.createElement("input");
+            obj.type="button";
+            obj.value="按钮";
+            obj.id="btn2";
+            myCommon("dv").appendChild(obj);
+        }
+        // var obj=document.createElement("input");
+        // obj.type="button";
+        // obj.value="按钮";
+        // obj.id="btn2";
+        // myCommon("dv").appendChild(obj);
+    };
+</script>
+</body>
+</html>

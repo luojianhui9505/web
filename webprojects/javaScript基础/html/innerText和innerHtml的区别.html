@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid pink;
+        }
+    </style>
+</head>
+<body>
+<script>
+    /*
+    * 区别：1、获取时：innerText可以获取标签中文字内容，以及标签中的标签里面的文字内容，但是不可以获取标签
+    *       innerHTML可以获取标签中的文字内容以及标签中的标签
+    *       2、设置时：当有标签的时候，innerText会把内容和标签一同显示出来，而innerHTML只会显示内容，不会显示标签
+    * 相同点：都可以获取和设置标签中的内容，写代码时看标签的情况而定
+    *
+    *
+    * */
+</script>
+<input type="button" value="显示效果" id="btn">
+<div id="dv">
+    我是一个div
+    <p>我是一个p</p>
+</div>
+<script src="../js/common.js"></script>
+<!--设置标签中的内容-->
+<script>
+    myCommon("btn").onclick=function () {
+        myCommon("dv").innerText="<p>我很帅</p>";
+        myCommon("dv").innerHTML="<p>我很帅</p>";
+    }
+</script>
+<script>
+    myCommon("btn").onclick=function () {
+        console.log(myCommon("dv").innerText);
+        console.log(myCommon("dv").innerHTML);
+    }
+</script>
+</body>
+</html>

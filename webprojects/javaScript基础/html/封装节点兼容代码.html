@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="uu">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+<script src="../js/common.js"></script>
+<script>
+    // 获取任意一个父级元素的第一个子级元素
+    function getFirstChild(element) {
+        if (typeof element.firstElementChild!=="undefined"){//ie不支持firstElementChild，支持firstChlid
+            // 但是，把firstChild看做是找第一个子级元素，而不是子节点，如果这里不是undefined，说明浏览器不是ie浏览器，直接返回第一个子级元素就可以
+            return element.firstElementChild;
+            // 如果是undefined，就应该要判断第一个节点是不是一个标签，有可能是文本内容
+        }else{
+            // 这里要考虑的就是如果是火狐或者谷歌浏览器，但是有可能第一个子节点不是li标签，如果是ie浏览器直接返回element.firstChild就可以
+            var node=element.firstChild;
+            // 是一个子节点但是不是一个标签，说明就有可能是文本内容或者属性
+            while(node&&node.nodeType!==1){
+                // 那么就应该依次往下面找其他的兄弟节点
+                node=node.nextSibling;
+            }
+
+        }
+        return node;
+    }
+    console.log(getFirstChild(myCommon("uu")));
+    // 获取任意一个父级元素的最后一个子级元素
+    function getLastChild(element) {
+        if (typeof element.lastElementChild!=="undefined"){//ie不支持firstElementChild，支持firstChlid
+            // 但是，把firstChild看做是找第一个子级元素，而不是子节点，如果这里不是undefined，说明浏览器不是ie浏览器，直接返回第一个子级元素就可以
+            return element.lastElementChild;
+            // 如果是undefined，就应该要判断第一个节点是不是一个标签，有可能是文本内容
+        }else{
+            // 这里要考虑的就是如果是火狐或者谷歌浏览器，但是有可能第一个子节点不是li标签，如果是ie浏览器直接返回element.firstChild就可以
+            var node=element.lastChild;
+            // 是一个子节点但是不是一个标签，说明就有可能是文本内容或者属性
+            while(node&&node.nodeType!==1){
+                // 那么就应该依次往下面找其他的兄弟节点
+                node=node.previousSibling;
+            }
+
+        }
+        return node;
+    }
+    console.log(getLastChild(myCommon("uu")));
+</script>
+</body>
+</html>

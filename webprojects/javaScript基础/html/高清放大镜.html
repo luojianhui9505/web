@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       * {
+           margin: 0;
+           padding: 0;
+       }
+       #box {
+           width: 350px;
+           height: 350px;
+           position: relative;
+           margin: 100px;
+           border: 1px solid #e5d790;
+           /*overflow: hidden;*/
+       }
+        .smallBox {
+            position: relative;
+        }
+        .smallBox img {
+            width: 350px;
+        }
+        .smallBox .smallMask {
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,0,0.4);
+            /*脱标，就相对于父级元素而言的距离*/
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+            display: none;
+        }
+        .bigMask {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 360px;
+            border: 1px solid #e5d790;
+            overflow: hidden;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="smallBox">
+        <div class="smallMask"></div>
+        <img src="images/small.png" alt="">
+    </div>
+    <div class="bigMask">
+        <img src="images/big.jpg" alt="">
+    </div>
+</div>
+<script>
+    var box=document.getElementById("box");
+    var smallBox=box.children[0];
+    var smallMask=smallBox.children[0];
+    var smallImg=smallBox.children[1];
+    var bigMask=box.children[1];
+    var bigImg=bigMask.children[0];
+    box.onmouseover=function () {
+        smallMask.style.display="block";
+        bigMask.style.display="block"
+    };
+    box.onmouseout=function () {
+        smallMask.style.display="none";
+        bigMask.style.display="none"
+    };
+    // 鼠标的移动事件
+    smallBox.onmousemove=function (e) {
+        // 设置鼠标在遮挡层的中间位置
+        var x=e.clientX-smallMask.offsetWidth/2;
+        var y=e.clientY-smallMask.offsetHeight/2;
+        // 因为上面设置了marginleft和margintop为正的100px，所以这里要减去100px
+        x=x-100;
+        y=y-100;
+        // 横坐标的最小值
+        x=x<0?0:x;
+        // 纵坐标的最小值
+        y=y<0?0:y;
+        // 横坐标的最大值
+        x=x>smallBox.offsetWidth-smallMask.offsetWidth?smallBox.offsetWidth-smallMask.offsetWidth:x;
+        y=y>smallBox.offsetHeight-smallMask.offsetHeight?smallBox.offsetHeight-smallMask.offsetHeight:y;
+        smallMask.style.left=x+"px";
+        smallMask.style.top=y+"px";
+        // 移动比例
+        // 小图层的移动距离/大图的移动距离=小图层的最大移动距离/大图的最大移动距离
+        // 大图的移动距离=小图层的移动距离*大图的最大移动距离/小图层的最大移动距离
+        // 大图横向移动最大距离
+        var maxX=bigImg.offsetWidth-bigMask.offsetWidth;smallBox.offsetWidth-smallMask.offsetWidth
+        // 大图纵向移动最大距离
+        var maxY=bigImg.offsetHeight-bigMask.offsetHeight;
+        // 大图的横向移动距离
+        var bigImgMoveX=x*maxX/(smallBox.offsetWidth-smallMask.offsetWidth);
+        var bigImgMoveY=y*maxY/(smallBox.offsetHeight-smallMask.offsetHeight);
+        bigImg.style.marginLeft=-bigImgMoveX+"px";//当遮挡层向右边移动时，图片向左边移动，所以是负的距离
+        bigImg.style.marginTop=-bigImgMoveY+"px";
+    }
+</script>
+</body>
+</html>

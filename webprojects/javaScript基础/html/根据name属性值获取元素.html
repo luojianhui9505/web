@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"><br />
+<input type="text" value="你好" name="name1"><br />
+<input type="text" value="你好" name="name2"><br />
+<input type="text" value="你好" name="name1"><br />
+<input type="text" value="你好" name="name3"><br />
+<input type="text" value="你好" name="name1"><br />
+<input type="text" value="你好" name="name4"><br />
+<input type="text" value="你好" name="name1"><br />
+<script src="../js/common.js"></script>
+<script>
+    myCommon("btn").onclick=function () {
+        // 注意：这里的getElementsByName是获取name属性值，而getElementsByTagName是获取标签名字，返回的都是是伪数组
+        var obj=document.getElementsByName("name1");
+        for (var i=0;i<obj.length;i++){
+            obj[i].value="我们好";
+        }
+    };
+</script>
+</body>
+</html>

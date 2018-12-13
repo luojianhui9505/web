@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 322px;
+            overflow: hidden;
+        }
+        span {
+            width: 30px;
+            height: 20px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <span id="closeBtn"></span>
+    <div id="hd">
+        <img src="images/t.jpg" alt="">
+    </div>
+    <div id="bd">
+        <img src="images/b.jpg" alt="">
+    </div>
+</div>
+<script>
+    function getStyle(element,attr) {
+        return window.getComputedStyle ? window.getComputedStyle(element, null)[attr] : element.currentStyle[attr];
+    }
+    function animate(element,json,fn){
+        clearInterval(element.timeId);
+        element.timeId=setInterval(function () {
+            var flag=true;
+            for (var attr in json){
+                if (attr=="opacity"){
+                    var current=getStyle(element,attr)*100;
+                   var target=json[attr]*100;
+                   var step=(target-current)/10;
+                   step=step>0?Math.ceil(step):Math.floor(step);
+                   current+=step;
+                   element.style[attr]=current/100;
+                }else if (attr=="zIndex"){
+                    element.style[attr]=json[attr];
+                }else{
+                    var current=parseInt(getStyle(element,attr));
+                    var target=json[attr];
+                    var step=(target-current)/10;
+                    step=step>0?Math.ceil(step):Math.floor(step);
+                    current+=step;
+                    element.style[attr]=current+"px";
+                }
+                if (current!=target){
+                    flag=false;
+                }
+            }
+            if (flag){
+                clearInterval(element.timeId);
+                if (fn){
+                    fn();
+                }
+            }
+        },20)
+    }
+    document.getElementById("closeBtn").onclick=function () {
+        animate(document.getElementById("bd"),{"height":0},function () {
+            animate(document.getElementById("box"),{"width":0});
+        });
+    };
+</script>
+</body>
+</html>

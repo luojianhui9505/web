@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<ul id="p1">
+    <li><a href="images/1.png" title="图1"><img src="images/2.png" alt="图片1" width="100"></a></li>
+    <li><a href="images/1.png" title="图2"><img src="images/2.png" alt="图片1"  width="100"></a></li>
+    <li><a href="images/1.png" title="图3"><img src="images/2.png" alt="图片1"  width="100"></a></li>
+    <li><a href="images/logo.jpg" title="图4"><img src="images/2.png" alt="图片1"  width="100"></a></li>
+    <li><a href="images/1.png" title="图5"><img src="images/2.png" alt="图片1"  width="100"></a></li>
+</ul>
+<!--清除盒子浮动-->
+<div style="clear: both"></div>
+
+<img src="" alt="" id="p2" width="450">
+
+<p id="p3">选择一个图片</p>
+<!--调用common.js文件-->
+<script src="../js/common.js"></script>
+<script>
+    // 根据id找到相应的标签，再从此标签中找到相应的元素
+    var obj=myCommon("p1").getElementsByTagName("a");
+    // 循环遍历为每一个a标签注册响应事件
+    for(var i=0;i<obj.length;i++){
+        obj[i].onclick=function () {
+            // 将id为p2的src属性改为相应点击的链接
+            myCommon("p2").src=this.href;
+            // 将id为p3的内容变为相应的点击链接的title属性的值
+            myCommon("p3").innerText=this.title;
+            // 阻止超链接跳转
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

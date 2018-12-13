@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 300px;
+			height: 200px;
+			background-color: pink;
+		}
+	</style>
+<script>
+	function getColor(){
+		var str="#";
+		var arr=["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+
+		for(var i=0;i<6;i++){
+		    // 获取0-15的随机数字,做为数组的索引
+			var num=parseInt(Math.random()*16);
+			str+=arr[num];
+		}
+		return str;
+	}
+	window.onload=function(){
+		document.getElementById("dv").style.backgroundColor=getColor();
+	}
+	console.log(getColor());
+</script>
+
+</head>
+<body>
+<div id="dv"></div>
+</body>
+</html>

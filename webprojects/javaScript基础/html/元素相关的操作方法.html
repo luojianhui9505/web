@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #cccccc;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="显示效果" id="btn">
+<input type="button" value="干掉第一个子元素" id="btn1">
+<input type="button" value="干掉所有的子元素" id="btn2">
+<div id="dv"></div>
+<script src="../js/common.js"></script>
+<script>
+    var i=0;
+    document.getElementById("btn").onclick=function () {
+        i++;
+        var obj=document.createElement("input");//创建一个input标签
+        obj.type="button";
+        obj.value="按钮"+i;
+        // document.getElementById("dv").appendChild(obj);//追加子元素到div中
+        document.getElementById("dv").insertBefore(obj,document.getElementById("dv").firstElementChild);//把新的子元素插入到第一个子元素的前面
+
+    };
+    document.getElementById("btn1").onclick=function () {
+        var obj=document.getElementById("dv");
+        obj.removeChild(myCommon("dv").firstElementChild);//干掉第一个子元素
+    };
+    myCommon("btn2").onclick=function () {
+        var obj=myCommon("dv");
+        while(myCommon("dv").firstElementChild) {
+            obj.removeChild(myCommon("dv").firstElementChild);//干掉所有的子元素
+        }
+    };
+</script>
+
+<!--replaceChild（）方法-->
+<ul id="myList"><li>Coffee</li><li>Tea</li><li>Milk</li></ul>
+<button onclick="myFunction()">试一下</button>
+
+<script>
+    function myFunction(){
+        var textnode=document.createTextNode("Water");
+        var item=document.getElementById("myList").childNodes[0];
+        item.replaceChild(textnode,item.childNodes[0]);
+    }
+</script>
+
+</body>
+</html>

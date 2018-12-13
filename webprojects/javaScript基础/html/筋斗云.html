@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #nav {
+            height: 40px;
+            width: 900px;
+            border: 1px solid #cccccc;
+            margin: 100px auto;
+            position: relative;
+            border-radius: 20px;
+            background: url(images/rss.png) right center no-repeat;
+        }
+        ul {
+            position: relative;
+        }
+        #nav li {
+            height: 40px;
+            list-style: none;
+            cursor: pointer;
+            float: left;
+            text-align: center;
+            margin-left: 20px;
+            line-height: 40px;
+        }
+        #cloud {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 83px;
+            height: 42px;
+            background: url(images/cloud.gif) no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div id="nav">
+    <span id="cloud"></span>
+    <ul id="navBar">
+        <li>北京校区</li>
+        <li>上海校区</li>
+        <li>重庆校区</li>
+        <li>武汉校区</li>
+        <li>广东校区</li>
+        <li>联系我们</li>
+        <li>关于我们</li>
+        <li>招聘人才</li>
+    </ul>
+</div>
+<script>
+function animate(element,target) {
+    clearInterval(element.timeId);
+    element.timeId=setInterval(function () {
+        var current=element.offsetLeft;
+        var step=(target-current)/10;
+        step=step>0?Math.ceil(step):Math.floor(step);
+        current+=step;
+        element.style.left=current+"px";
+        if (current===target){
+            clearInterval(element.timeId);
+        }
+    },20);
+}
+// 获取云彩
+    var cloud=document.getElementById("cloud");
+// 获取所有的li标签
+    var list=document.getElementById("navBar").children;
+    for (var i=0;i<list.length;i++){
+        list[i].onmouseover=function () {
+            animate(cloud,this.offsetLeft);
+        };
+        list[i].onmouseout=function () {
+            animate(cloud,lastPosition);
+        };
+        var lastPosition=0;//变量的初始化
+        list[i].onclick=function () {//记录当前点击的位置
+            lastPosition=this.offsetLeft;
+        }
+    }
+</script>
+</body>
+</html>

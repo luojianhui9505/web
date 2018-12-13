@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin-top: 10px;
+        }
+        .cls {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<p class="cls">我是一个p</p>
+<p>我是另一个p</p>
+<span>我是一个span</span><br>
+<span class="cls">我是另一个span</span>
+<div>我是一个盒子</div>
+<div class="cls">我是另一个盒子</div>
+<script>
+    // 返回的是一个伪数组，getElementsByClassName里面是写的class的值
+    var obj=document.getElementsByClassName("cls");
+    // 循环遍历
+    for (var i=0;i<obj.length;i++){
+        obj[i].style.backgroundColor="yellow";
+    }
+</script>
+</body>
+</html>

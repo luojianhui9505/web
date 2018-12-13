@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<!--append方法：添加节点或者创建节点，加在内容的后面-->
+<!--appendTo方法：将一个节点的内容加入到另一个节点内容的后面-->
+<!--prepend方法:在一个节点的内容前面加入一个节点的内容-->
+<!--prependTo方法:将一个节点加入到另一个节点内容前面去-->
+<!--after方法:在一个节点的后面加-->
+<!--before方法:在一个节点的后面加-->
+<div>
+    <p>我是内容</p>
+</div>
+<a href="https://www.baidu.com/">百度</a>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+       // $("div").append("<a href=\"https://www.baidu.com/\">百度</a>");
+        $("a").before($("div"));//相当于div显示在前面
+    });
+</script>
+</body>
+</html>

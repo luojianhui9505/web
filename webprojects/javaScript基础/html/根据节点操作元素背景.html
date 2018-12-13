@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #cccccc;
+        }
+    </style>
+</head>
+<body>
+<!--点击按钮让所有的span标签变色-->
+<input type="button" value="变色" id="btn">
+<div id="dv">
+    <span>我是一个span</span>
+    <p>我是一个p</p>
+    <span>我是一个span</span><br>
+    <a href="">我是一个a</a><br>
+    <span>我是一个span</span>
+    <h1>我是一个好h1</h1>
+    <span>我是一个span</span>
+</div>
+<script src="../js/common.js"></script>
+<script>
+    myCommon("btn").onclick=function () {
+        var objs=myCommon("dv");
+        var nodes=objs.childNodes;
+        for (var i=0;i<nodes.length;i++){
+            if(nodes[i].nodeType===1&&nodes[i].nodeName==="SPAN"){
+                nodes[i].style.backgroundColor="red";
+            }
+        }
+    }
+</script>
+</body>
+</html>

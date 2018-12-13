@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<img src="images/1.jpg" alt="" id="im">
+<script>
+    var evt={
+        getEvent:function (e) {
+            return window.event||e;
+        },
+        getClientX:function (e) {
+            return this.getEvent(e).clientX;
+        },
+        getClientY:function (e) {
+            return this.getEvent(e).clientY;
+        },
+        getScrollLeft:function () {
+            return window.pageXOffset||document.body.scrollLeft||document.documentElement.scrollLeft||0;
+        },
+        getScrollTop:function () {
+            return window.pageYOffset||document.body.scrollTop||document.documentElement.scrollTop||0;
+        },
+        getPageX:function (e) {
+            return this.getEvent(e).pageX?this.getEvent(e).pageX:this.getClientX(e)+this.getScrollLeft();
+        },
+        getPageY:function (e) {
+            return this.getEvent(e).pageY?this.getEvent(e).pageY:this.getClientY(e)+this.getScrollTop();
+        }
+    };
+    document.onmousemove=function (e) {
+        document.getElementById("im").style.left=evt.getPageX(e)+"px";
+        document.getElementById("im").style.top=evt.getPageY(e)+"px";
+    }
+</script>
+</body>
+</html>

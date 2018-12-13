@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="创建一个p标签" id="btn">
+
+<script>
+    document.getElementById("btn").onclick=function () {
+        document.write("<p>这是一个p</p>");//页面加载完毕后body里面只剩下这一个p标签，其他内容全部没有了
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+	body {
+		height: 1024px;
+	}
+	* {
+		margin:0;
+		padding: 0;
+	}
+	.text {
+		width: 600px;
+		border: 1px solid #ccc;
+		margin: 0 auto;
+		position: relative;
+
+	}
+	.text dl {
+		overflow: hidden;
+		line-height: 50px;
+		text-align: center;
+	}
+	.text dl dd,.text dl dt {
+		float: left;
+	}
+	.text dl dt {
+		width: 100px;
+	}
+	.text dl dd {
+		width: 200px;
+	}
+	.zhuce {
+		display: inline-block;
+		width: 100px;
+		position:relative;
+		bottom: 0;
+		left: 50%;
+		margin-left: -50px;
+		margin-top: 50px;
+	}
+	.chongzhi {
+		width: 100px;
+		margin-left: 100px;
+	}
+	.datelist {
+		text-align: center;
+		margin: 100px auto;
+	}
+	</style>
+</head>
+<body>
+<div class="datelist">
+<input type="text" value="请输入你喜欢的明星" list="star" >
+<datalist id="star">
+	<option value="杨柳">杨柳</option>
+	<option value="杨样">杨样</option>
+	<option value="杨过">杨过</option>
+	<option value="罗建辉">罗建辉</option>
+	<option value="罗志祥">罗志祥</option>
+	<option value="赵丽音">赵丽音</option>
+	<option value="刘亦菲">刘亦菲</option>
+	<option value="胡歌">胡歌</option>
+	<option value="刘德华">刘德华</option>
+</datalist>
+</div>
+	<form action="">
+	<div class="text">
+		<dl>
+			<dt>姓名</dt>
+			<dd><input type="text" value="杨柳"></dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<dl>
+			<dt>电话</dt>
+			<dd><input type="tel" value="18716902062"></dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<dl>
+			<dt>邮箱</dt>
+			<dd><input type="email" value="1641832579@qq.com"></dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<dl>
+			<dt>网址</dt>
+			<dd><input type="url" value="http/:www.baidu.com"></dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<dl>
+			<dt>出生日期</dt>
+			<dd><input type="date" value="1995"></dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<dl>
+			<dt>数字</dt>
+			<dd><input type="number"></dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<dl>
+			<dt>小时分钟</dt>
+			<dd><input type="time">
+			</dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<dl>
+			<dt>月份</dt>
+			<dd><input type="month"></dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<dl>
+			<dt>时间</dt>
+			<dd><input type="datetime"></dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<dl>
+			<dt>星期</dt>
+			<dd><input type="week"></dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<dl>
+			<dt>自由拖动滑块</dt>
+			<dd><input type="range"></dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<dl>
+			<dt>搜索</dt>
+			<dd><input type="search"></dd>
+			<dd>*注册后不可更改</dd>
+		</dl>
+		<input type="button" class="zhuce" value="注册">
+		<input type="reset" class="chongzhi" value="重置">
+		</div>
+	</form>
+	<fieldset>
+		<legend>用户登陆</legend>
+		用户名：<input type="text"><br /><br />
+		密码：  <input type="password">
+	</fieldset>
+</body>
+</html>

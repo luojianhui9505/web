@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 返回值是一个对象，所以getScroll（）可以看做一个对象，要调用top或者left可以用gerScroll点出来的方式
+    function getScroll() {
+        return {
+            left:window.pageXOffset||document.documentElement.scrollLeft||document.body.scrollLeft||0,
+            top:window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0
+        };
+    }
+    // 浏览器的滚动事件
+    window.onscroll=function () {
+        console.log(getScroll().top);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        div {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #cccccc;
+        }
+        table {
+            /*设置相邻单元格边框间的距离*/
+            border-spacing: 0;
+            /*合并表格的边框为一个单一的边框，会忽略border-spacing和empty-cells属性*/
+            border-collapse: collapse;
+            margin:100px auto;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="创建表格" id="btn">
+<div id="dv"></div>
+<script src="../js/common.js"></script>
+<script>
+    var arr=[   {name:"百度",href:"http://www.baidu.com"},//是一个对象
+                {name:"新浪微博",href:"https://weibo.com"},
+                {name:"腾讯",href:"https://v.qq.com"},
+                {name:"优酷",href:"https://www.youku.com"},
+                {name:"爱奇艺",href:"http://www.iqiyi.com/"},
+                {name:"火狐",href:"http://www.firefox.com.cn/"},
+                {name:"暴风影音",href:"http://www.baofeng.com/"},
+    ];
+    myCommon("btn").onclick=function () {
+        // 点击按钮创建table标签
+        var tableObjs=document.createElement("table");
+        tableObjs.border="1";
+        // 把创建的table标签追加到div标签里面
+        myCommon("dv").appendChild(tableObjs);
+        // 创建tr标签，并追加到table标签里面
+        // 循环遍历看要创建多少组tr标签，依据的是数组arr的长度
+        for (var i=0;i<arr.length;i++){
+            var dt=arr[i];//数组里面的每一个对象
+            var trObjs=document.createElement("tr");
+            tableObjs.appendChild(trObjs);
+            // 每一行有两列
+            // 第一列
+            var tdObjs1=document.createElement("td");
+            tdObjs1.innerHTML=dt.name;
+            trObjs.appendChild(tdObjs1);
+            // 第二列
+            var tdObjs2=document.createElement("td");
+            tdObjs2.innerHTML="<a href="+dt.href+">"+dt.name+"</a>";//放标签与代码
+            trObjs.appendChild(tdObjs2);
+        }
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            /*脱标才可以移动，不保留位置的漂浮起来*/
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<img src="images/1.jpg" alt="" id="im">
+<script>
+    // 注册鼠标移动事件,ie浏览器不支持这个函数参数对象e，也不支持page这个属性，但是支持client这个属性，要使用就可以用window.event.clientX的形式。
+    // 火狐不支持window.event，支持函数参数对象
+    // 谷歌都支持
+    document.onmousemove=function (e) {
+        document.getElementById("im").style.left=e.pageX+"px";//可视区域的横坐标
+        document.getElementById("im").style.top=e.pageY+"px";//可视区域的纵坐标
+    }
+</script>
+</body>
+</html>

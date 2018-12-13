@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+            section {
+                width: 80%;
+                height: 600px;
+                /*background-color: pink;*/
+                margin: 100px auto;
+                display: flex;
+                /*flex-direction: column;*/
+            }
+            section div {
+                height: 100%;
+                flex: 1;
+                /*flex-direction: column;*/
+                /*min-width: 200px;*/
+            }
+        section div:nth-child(1) {
+            background-color: yellow;
+            min-width: 200px;
+            /*flex: 1;*/
+            /*width: 33.3%;*/
+        }
+            section div:nth-child(2) {
+                background-color: blue;
+                /*flex: 1;*/
+                /*width: 33.3%;*/
+            }
+            section div:nth-child(3) {
+                background-color: red;
+                /*flex: 1;*/
+                /*width: 33.3%;*/
+            }
+    </style>
+</head>
+<body>
+      <section>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+      </section>
+</body>
+</html>

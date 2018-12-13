@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<script>
+    var timed=window.setInterval(function () {
+        alert("你好");
+    },1000);
+    document.getElementById("btn").onclick=function(){
+        window.clearInterval(timed);
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="隔行变色" id="btn">
+<ul id="list">
+    <li>html</li>
+    <li>css</li>
+    <li>js</li>
+    <li>html5</li>
+    <li>css3</li>
+    <li>java</li>
+    <li>php</li>
+    <li>ajax</li>
+</ul>
+<script src="../js/common.js"></script>
+<script>
+    myCommon("btn").onclick=function () {
+        var lists=myCommon("list").getElementsByTagName("li");
+        for (var i=0;i<lists.length;i++){
+            lists[i].style.backgroundColor=i%2==0?"red":"yellow";//三元表达式
+        }
+    };
+</script>
+</body>
+</html>

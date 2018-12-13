@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="兼容按钮" id="btn">
+<script>
+    // 为任意的元素绑定任意的事件，任意元素，事件类型，事件处理函数
+    function addEventListener(element,type,fn) {//元素可以看成是一个对象
+        if (element.addEventListener){
+            element.addEventListener(type,fn,false);
+        }else if (element.attachEven){
+            element.attachEvent("on"+"type",fn);
+        }else{
+            element["on"+"type"]=fn;
+        }
+    }
+    addEventListener(document.getElementById("btn"),"click",function () {
+        console.log("苦心人，天不负");
+    });
+    addEventListener(document.getElementById("btn"),"click",function () {
+        console.log("卧薪尝胆，三千越甲可吞吴");
+    });
+    addEventListener(document.getElementById("btn"),"click",function () {
+        console.log("好好学习");
+    });
+</script>
+</body>
+</html>

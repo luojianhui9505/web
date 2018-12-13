@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--方法一：-->
+<input type="button" id="btn" value="绑定事件">
+<input type="button" value="解绑事件" id="btn2">
+<script>
+    document.getElementById("btn").onclick=function () {
+        console.log("我是第一个");
+    };
+    document.getElementById("btn2").onclick=function () {
+        document.getElementById("btn").onclick=null;
+    }
+</script>
+
+<!--方法二：-->
+<script>
+    function f1() {
+        console.log("我是第一个")
+    }
+    document.getElementById("btn").addEventListener("click",f1,false);//为按钮绑定事件
+    document.getElementById("btn2").onclick=function () {
+        document.getElementById("btn").removeEventListener("click",f1,false);//为刚刚绑定事件的按钮解绑事件
+    };
+</script>
+</body>
+</html>

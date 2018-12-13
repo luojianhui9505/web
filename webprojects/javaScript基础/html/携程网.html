@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>携程网</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        body, html {
+            min-width: 320px;
+            max-width: 540px;
+            /*background-color: blue;*/
+            margin: auto;
+            /*height: 400px;*/
+        }
+        nav {
+            border: 1px solid #cccccc;
+            padding: 4px;
+        }
+        .row {
+            height: 90px;
+            /*background-color: pink;*/
+            display: flex;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .row div {
+            height: 100%;
+            flex: 1;
+            background-color: #db7078;
+            border-right: 1px solid #ffffff;
+        }
+        .row a {
+            display: block;
+            height: 100%;
+            width: 100%;
+            font-size: 14px;
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 0 2px 1px rgba(0,0,0,0.5);
+            /*line-height: 45px;*/
+        }
+        .row div:nth-child(3) {
+            border-right: 0;
+        }
+        .row33 {
+            display: flex;
+            flex-direction: column;
+        }
+        .row33 a {
+            flex: 1;
+            line-height: 45px;
+        }
+        .row33 a:first-child {
+            border-bottom: 1px solid #ffffff;
+        }
+    </style>
+</head>
+<body>
+        <nav>
+            <div class="row">
+                <div>
+                    <a href="#"></a>
+                </div>
+                <div class="row33">
+                    <a href="#">特价酒店</a>
+                    <a href="#">海外酒店</a>
+                </div>
+                <div class="row33">
+                    <a href="#">客栈民宿</a>
+                    <a href="#">火车票</a>
+                </div>
+            </div>
+        </nav>
+</body>
+</html>

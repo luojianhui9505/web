@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="移动到400" id="btn">
+<div id="dv"></div>
+<script>
+    // element:元素
+    // attr：属性的值
+    // target：目标距离
+    document.getElementById("btn").onclick=function () {
+        animate(document.getElementById("dv"),"height",400);
+    };
+    // 获取任意元素的任意属性的的值
+    function getStyle(element,attr) {//返回的是一个字符串类型
+        return window.getComputedStyle?window.getComputedStyle(element,null)[attr]:element.currentStyle[attr];
+    }
+    // 为任意元素的任意属性添加动画到达指定位置
+    function animate(element,attr,target) {
+        clearInterval(element.timeId);
+        element.timeId=setInterval(function () {
+            var current=parseInt(getStyle(element,attr));//把当前元素的属性的值转为数字类型
+            var step=(target-current)/10;
+            step=step>0?Math.ceil(step):Math.floor(step);
+            current+=step;
+            element.style[attr]=current+"px";
+            if (current===target){
+                clearInterval(element.timeId);
+            }
+        },20)
+    }
+</script>
+</body>
+</html>

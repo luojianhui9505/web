@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 450px;
+              margin: 200px auto;
+          }
+        #text {
+            width: 350px;
+            height: 20px;
+            border: 1px solid #cccccc;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="text" value="" id="text">
+    <input type="button" value="搜索" id="btn">
+</div>
+<script src="../js/common.js"></script>
+<script>
+    var keyWords=["罗建辉","罗建芬","罗建军","杨柳","杨阳","杨群","小小苏","小明","小小小","罗大大","罗健康","罗发财"];//自定义关键字
+    myCommon("text").onkeyup=function () {//注册键盘按键被松开时的事件
+        if (myCommon("dv")){//开始时判断有没有div，如果有，就先把这个div删除
+            myCommon("box").removeChild(myCommon("dv"));
+        }
+        var text=this.value;//获取文本框输入的内容
+        var tempArr=[];//存取对应上的数据
+        for (var i=0;i<keyWords.length;i++) {//循环遍历数组把数组中的数据与输入的数据进行比较看输入的数据是否是数组中的前面一个或多个数
+            if (keyWords[i].indexOf(text) === 0) {
+                tempArr.push(keyWords[i]);//如果输入的数据与数组中索引为0的位置的数据对应，则将这些数据依次放入tempArr数组中
+            }
+        }
+            if (this.value.length===0||tempArr.length===0){//如果文本框中没有输入内容，或者输入内容了但是临时数组中没有内容，说明输入的数据在自定义的数组中没有，此时就不应该有div显示
+                if (myCommon("dv")){//判断是否存在div，如果存在就删除
+                    myCommon("box").removeChild(myCommon("dv"));
+                }
+                return;
+            }
+        var divObjs=document.createElement("div");//创建div标签
+        myCommon("box").appendChild(divObjs);//将创建的div标签加入到id为box的div中
+        divObjs.id="dv";//为创建的div设置id属性的值是dv
+        divObjs.style.width="350px";
+        // divObjs.style.height="100px";
+        divObjs.style.border="1px solid #cccc";
+        for (var i=0;i<tempArr.length;i++){//循环建立p标签
+            var pObjs=document.createElement("p");//创建p标签
+            divObjs.appendChild(pObjs);//将p标签加入到创建的div中
+            setInnerText(pObjs,tempArr[i]);//调用函数setInnerText在p标签里面加入内容
+            pObjs.style.cursor="pointer";
+            pObjs.style.margin=0;
+            pObjs.style.padding=0;
+            pObjs.style.marginTop="5px";
+            pObjs.style.marginLeft="5px";
+            pObjs.onmouseover=function () {//添加鼠标进入事件
+                this.style.backgroundColor="yellow";
+            };
+            pObjs.onmouseout=function () {//添加鼠标离开事件
+                this.style.backgroundColor="";
+            }
+        }
+    };
+</script>
+</body>
+</html>

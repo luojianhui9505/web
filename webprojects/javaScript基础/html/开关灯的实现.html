@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bod {
+            background-color: black;
+        }
+    </style>
+</head>
+<body id="deng">
+<input type="button" value="开灯" id="btn">
+<script src="../js/common.js"></script>
+<script>
+    // 根据id找到按钮,为按钮注册点击事件,添加事件处理函数
+    myCommon("btn").onclick=function () {
+        // 判断body的类样式是否为bod
+        if (myCommon("deng").className==="bod"){
+            myCommon("deng").className="";
+            this.value="关灯";
+        }else{
+            myCommon("deng").className="bod";
+            this.value="开灯"
+        }
+    }
+</script>
+</body>
+</html>

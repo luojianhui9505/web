@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #text {
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <textarea name="" id="text" cols="30" rows="10">
+        请仔细阅读相关协议，阅读完毕后即可执行后面的操作
+    </textarea>
+    <input type="button" value="请仔细阅读协议(5)" id="btn" disabled="disabled">
+</div>
+<script>
+    var time=5;
+    var timed=window.setInterval(function () {
+        time--;
+        document.getElementById("btn").value="请仔细阅读协议"+"("+time+")";
+        if (time<=0){
+            window.clearInterval(timed);
+            document.getElementById("btn").disabled=false;
+            document.getElementById("btn").value="同意";
+        }
+    },1000)
+</script>
+</body>
+</html>

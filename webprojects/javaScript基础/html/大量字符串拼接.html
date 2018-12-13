@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="拼接吧" id="btn"><br />
+<input type="text"><br />
+<input type="text"><br />
+<input type="text"><br />
+<input type="text"><br />
+<input type="text"><br />
+<input type="text"><br />
+<script>
+    // document.getElementById("btn").onclick=function () {
+    //     var str=[];
+    //     var inputs=document.getElementsByTagName("input");
+    //     for (var i=0;i<inputs.length;i++){
+    //         if (inputs[i].type!=="button"){
+    //            str.push(inputs[i].value);
+    //         }
+    //     }
+    //     console.log(str.join("|"));//join返回的就是一个字符串
+    // };
+    document.getElementById("btn").onclick=function () {
+        var str = "";
+        var inputs = document.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length - 1; i++) {
+            if (inputs[i].type !== "button") {
+                str += inputs[i].value + "|";
+            }
+        }
+        console.log(str+inputs[inputs.length-1].value);
+    }
+</script>
+</body>
+</html>

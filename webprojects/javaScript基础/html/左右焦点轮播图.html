@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            position: relative;
+            width: 730px;
+            height:454px ;
+            margin: 100px auto;
+        }
+        #inner {
+            width: 730px;
+            height: 454px;
+            position: relative;
+            top: 0;
+            left: 0;
+            /*overflow: hidden;*/
+        }
+        #inner ul {
+            width: 9999px;
+            position: absolute;
+        }
+        ul li {
+            float: left;
+            list-style: none;
+        }
+        #switchBtn {
+            width: 730px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            cursor: pointer;
+            display: none;
+        }
+        #switchBtn #left {
+            width: 40px;
+            height: 40px;
+            float: left;
+            background:rgba(255,255,255,0.3);
+            border-radius: 50%;
+            line-height: 40px;
+            text-align: center;
+            font-weight: 700;
+            font-family: "微软雅黑";
+            font-size: 30px;
+        }
+        #switchBtn #right {
+            width: 40px;
+            height: 40px;
+            float: right;
+            background:rgba(255,255,255,0.3);
+            border-radius: 50%;
+            line-height: 40px;
+            text-align: center;
+            font-weight: 700;
+            font-family: "微软雅黑";
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<!--充当一个父级的角色。也可以不要，要了更方便-->
+<div id="box">
+    <!--相框-->
+    <div id="inner">
+        <ul>
+            <li><a href="#"><img src="easeMap/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/6.jpg" alt=""></a></li>
+        </ul>
+    </div>
+    <!--左右切换按钮-->
+    <!--把两个切换按钮放在一个div中，为了方便显示与隐藏，div显示，那么两个span就显示-->
+    <div id="switchBtn" >
+        <span id="left">&lt;</span>
+        <span id="right">&gt;</span>
+    </div>
+</div>
+<script src="../js/common.js"></script>
+<script>
+    var box=myCommon("box");
+    var inner=box.children[0];
+    var imgWidth=inner.offsetWidth
+    var switchBtn=box.children[1];
+    var left=myCommon("left");
+    var right=myCommon("right");
+    var ulObj=inner.children[0];//移动的是ul所以要获取ul
+    box.onmouseover=function () {
+        switchBtn.style.display="block";
+    };
+    box.onmouseout=function () {
+        switchBtn.style.display="none";
+    };
+    var index=0;
+    myCommon("right").onclick=function () {
+        if (index<ulObj.children.length-1){
+            index++;
+            animate(ulObj,-index*imgWidth);
+        }
+    };
+   myCommon("left").onclick=function () {
+        if (index>0) {
+            index--;
+            animate(ulObj,-index*imgWidth)
+        }
+    };
+</script>
+</body>
+</html>

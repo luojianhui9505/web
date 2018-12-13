@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #btn1{
+            width: 300px;
+            height: 200px;
+            background-color: red;
+        }
+        #btn2{
+            width: 250px;
+            height: 150px;
+            background-color: green;
+        }
+        #btn3{
+            width: 200px;
+            height:100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="btn1">
+    <div id="btn2">
+        <div id="btn3"></div>
+    </div>
+</div>
+<!--1、事件捕获阶段：从外到里-->
+<!--2、事件目标阶段：点击哪一个哪一个就是目标-->
+<!--3、事件冒泡阶段：从里到外-->
+<!--4、冒泡阶段和捕获阶段不可能同时存在-->
+<!--后面是false就是事件冒泡阶段，后面是true就是事件捕获阶段-->
+<!--其中eventphase代表的是事件阶段-->
+<script>
+    // 点击哪一个哪一个就是事件的目标，e.eventPhase就等于2，事件冒泡时，e.eventPhase就等于三，事件捕获时e.eventPhase就等于1
+    document.getElementById("btn1").addEventListener("click",function (e) {
+        console.log(this.id+"=====>"+e.eventPhase);
+
+    },false);//如果这里是false就是事件的冒泡，如果是true就是事件的捕获
+    document.getElementById("btn2").addEventListener("click",function (e) {
+        console.log(this.id+"=====>"+e.eventPhase);//e为函数参数对象
+    },false);
+    document.getElementById("btn3").addEventListener("click",function (e) {
+        console.log(this.id+"=====>"+e.eventPhase);
+        // e.stopPropagation();
+    },false);
+</script>
+</body>
+</html>

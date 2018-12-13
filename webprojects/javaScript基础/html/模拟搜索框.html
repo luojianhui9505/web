@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+<input type="text" value="请输入搜索内容" id="tet">
+<script src="../js/common.js"></script>
+<script>
+    // 注册获取焦点事件，onfocus的意思就是获取焦点的意思
+    myCommon("tet").onfocus=function () {
+        // 判断文本框里面的内容是不是默认的内容
+        if(this.value==="请输入搜索内容"){
+            // 获取焦点时，清空里面内容为空
+            this.value="";
+            // 并将输入字体颜色改为黑色
+            this.style.color="black"
+        }
+    };
+    // 注册失去焦点事件，onblur的意思就是失去焦点的意思
+    myCommon("tet").onblur=function () {
+        // 长度是数字，而不是字符串
+        if (this.value.length===0){
+            // 失去焦点时，将文本空里面的内容恢复为默认值
+            this.value="请输入搜索内容";
+            // 并将里面字体颜色恢复为默认值
+            this.style.color="gray"
+        }
+    };
+</script>
+</body>
+</html>

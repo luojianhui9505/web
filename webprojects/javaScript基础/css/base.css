@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li {
+    list-style: none;
+}
+.switch {
+    width: 400px;
+    height: 300px;
+    border: 1px solid #cccccc;
+    margin: 100px auto;
+    overflow: hidden;
+    /*padding-top: 20px;*/
+}
+.hd {
+    height: 45px;
+
+}
+.hd span {
+    display: inline-block;
+    width: 90px;
+    text-align: center;
+    line-height: 45px;
+    background-color: pink;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.hd .current {
+    background-color: purple;
+}
+.bd li {
+    height: 255px;
+    background-color: purple;
+    display: none;
+}
+.bd .current {
+    display: block;
+}

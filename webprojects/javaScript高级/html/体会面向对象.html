@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="显示效果" id="btn">
+<div id="dv"></div>
+<script>
+    // 传入的是对象
+    // 自定义构造函数
+    function ChangeStyle(btnObj,dvObj,json){
+        this.btnObj=btnObj;//把对象存储在属性里面
+        this.dvObj=dvObj;
+        this.json=json;
+    }
+    // 引入原型，数据共享，节省空间
+    ChangeStyle.prototype.init=function () {
+        var that=this;
+        this.btnObj.onclick=function () {
+            for (var key in that.json){//如果这里用this指的是上面的this.btnObj，而不单单只是this，所以要在之前定义一个变量把this存储
+                that.dvObj.style[key]=that.json[key];
+            }
+        };
+    };
+    // 实例化对象
+    var json={"width":"200px","height":"200px","backgroundColor":"blue","opacity":"0.2"};
+    var cs=new ChangeStyle(document.getElementById("btn"),document.getElementById("dv"),json);
+    // 调用方法
+    cs.init();
+</script>
+</body>
+</html>

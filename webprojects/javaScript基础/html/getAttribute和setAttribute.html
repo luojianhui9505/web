@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul li {
+            cursor: pointer;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li score="10">罗建辉</li>
+    <li score="20">罗建辉</li>
+    <li score="30">罗建辉</li>
+    <li score="40">罗建辉</li>
+    <li score="50">罗建辉</li>
+</ul>
+<script src="../js/common.js"></script>
+<script>
+    // 根据id找到相应元素里面的标签li
+    var lists=myCommon("list").getElementsByTagName("li");
+    // 循环遍历为每一个li标签注册点击事件，添加事件处理函数
+    for (var i=0;i<lists.length;i++){
+        lists[i].onclick=function () {
+           // 用getAttribute 获取自定义变量score
+           //  this代表点击哪一个就弹框哪一个对应的分数
+            alert(this.getAttribute("score"));
+        }
+    }
+    // 设置自定义变量的属性并且获取自定义变量属性的值
+</script>
+
+    // 用setAttribute设置自定义变量的属性并且用getAttribute获取自定义变量属性的值
+    <ul id="list1">
+        <li>罗建辉</li>
+        <li>罗建辉</li>
+        <li>罗建辉</li>
+        <li>罗建辉</li>
+        <li>罗建辉</li>
+        </ul>
+<script src="../js/common.js"></script>
+<script>
+    var lists=myCommon("list1").getElementsByTagName("li");
+    // 循环为每一个li设置自定义属性的名字和自定义属性的值，先设置好后才注册每个的点击事件，添加事件处理函数，点击时才回弹框对应的score属性的值
+    for (var i=0;i<lists.length;i++){
+       lists[i].setAttribute("score",(i+1)*100);
+        lists[i].onclick=function () {
+            alert(this.getAttribute("score"));
+        }
+    }
+
+</script>
+</body>
+</html>

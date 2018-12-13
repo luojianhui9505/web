@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        input {
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        div {
+            margin-top: 10px;
+            /*margin-left:10px;*/
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="移动到400" id="btn1" >
+<input type="button" value="移动到800" id="btn2">
+<div id="dv"></div>
+<script>
+    // 把开始走的位置看做是当前位置，到达的位置看做是目标位置，不分从左到右，还是从右到左
+    // 移动元素就会脱离文本流，所以要用到定位
+    // 因为是每20毫秒就会走10px，并且是一次性的，如果走的距离与目标的距离刚好差10px，那么再走20毫秒就刚好到达目标值，但是如果走的距离与目标的距离小于10px，那么再走20毫秒就会超过目标距离
+    // 此时就应该直接跳到目标距离去，计时器时间是固定的。比如说，我的目标是800px，我已经走了795px，如果我再走20毫秒就会走805px，那么就超过了目标值，所以这里避免超过目标值，也为了刚好达到目标
+    // 就应该直接跳到目标的位置
+    document.getElementById("btn1").onclick=function(){
+        animate(document.getElementById("dv"),400);
+    };
+    document.getElementById("btn2").onclick=function(){
+        animate(document.getElementById("dv"),800);
+    };
+    function animate(element,target){
+        clearInterval(element.timeId);
+        element.timeId=setInterval(function () {//计时器
+            var current=element.offsetLeft;//返回的是数字类型,不知道当前距离的情况下
+            var step=10;//每20毫秒走10px
+            step=current<target?step:-step;//现在离左边的距离是不是比目标距离要小，如果是，那就走正数，否则走负数,以向右为正，向左为负；
+            current+=step;//当前走的距离，每20毫秒会走10px，这里有从左到右，也有从右到左，step有正负
+            if (Math.abs(target-current)>=Math.abs(step)){//判断目标距离减去当前走的距离是否还够走一次，如果够，那么就继续以20毫秒每10px的速度继续走，
+                // 如果不够再走一次，继续走就会超过目标距离，所以停止继续走而是跳到目标距离
+                document.getElementById("dv").style.left=current+"px";//以20毫秒每10px的速度继续走
+            } else{
+                clearInterval(element.timeId);//清除计时器停止继续以20毫秒的速度运动，直接跳到目标距离
+                document.getElementById("dv").style.left=target+"px";//如果目标距离减去当前距离小于step，就直接跳到目标距离
+            }
+        },20);
+    }
+    // 获取任意的元素移动到指定的位置
+
+</script>
+</body>
+</html>

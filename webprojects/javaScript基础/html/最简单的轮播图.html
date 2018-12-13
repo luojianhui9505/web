@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            list-style: none;
+        }
+        #box {
+            width: 730px;
+            height: 454px;
+            margin: 100px auto;
+        }
+        #photoFrame {
+            position: relative;
+            width: 730px;
+            height: 454px;
+            overflow: hidden;
+        }
+      ul li{
+            float: left;
+        }
+      img {
+          vertical-align: top;
+      }
+        #uu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1000%;
+        }
+        #switchBtn {
+            width: 120px;
+            position: absolute;
+             left: 50%;
+            margin-left: -60px;
+            bottom: 10px;
+        }
+        #switchBtn span {
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            background-color: #cccccc;
+            text-align: center;
+            line-height: 15px;
+            cursor: pointer;
+        }
+        #switchBtn .current {
+            background-color: pink;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="photoFrame">
+        <ul id="uu">
+            <li><a href="#"><img src="easeMap/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="easeMap/6.jpg" alt=""></a></li>
+        </ul>
+        <div id="switchBtn">
+            <span class="current">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+        </div>
+    </div>
+</div>
+<script src="../js/common.js"></script>
+<script>
+    var box=myCommon("box");
+    var photoFrame=box.children[0];
+    var photoFrameWidth=photoFrame.offsetWidth;
+    var ulObj=photoFrame.children[0];
+    var spanObj=photoFrame.children[1].children;
+    for (var i=0;i<spanObj.length;i++){
+        spanObj[i].setAttribute("index",i);//为每一个span标签添加索引，方便后面点击按钮完成对应图片的切换
+      spanObj[i].onmouseover=function () {//注册鼠标进入事件
+            for (var j=0;j<spanObj.length;j++){//为每一span标签添加鼠标进入事件
+                spanObj[j].removeAttribute("class");//先移除全部span的类样式
+            }
+            this.className="current";//当前点击的span标签设置类样式
+            var index=this.getAttribute("index");//获取当前点击span标签的索引值
+            animate(ulObj,-index*photoFrameWidth);//调用函数，移动ul到目标位置，即当前索引值乘以照片的宽度
+        }
+    }
+    // 移动任意元素到指定目标通用函数
+    function animate(element,target){
+        clearInterval(element.timeId);
+        element.timeId=setInterval(function () {//计时器
+            var current=element.offsetLeft;//获取当前的距离，返回的是数字类型
+            var step=30;//每20毫秒走10px
+            step=current<target?step:-step;//现在离左边的距离是不是比目标距离要小，如果是，那就走正数，否则走负数,以向右为正，向左为负；
+            current+=step;//当前走的距离，每20毫秒会走10px，这里有从左到右，也有从右到左，step有正负
+            if (Math.abs(target-current)>Math.abs(step)){//判断目标距离减去当前走的距离是否还够走一次，如果够，那么就继续以20毫秒每10px的速度继续走，
+                // 如果不够再走一次，继续走就会超过目标距离，所以停止继续走而是跳到目标距离
+                element.style.left=current+"px";//以20毫秒每10px的速度继续走
+            } else{
+                clearInterval(element.timeId);//清除计时器停止继续以20毫秒的速度运动，直接跳到目标距离
+                element.style.left=target+"px";//如果目标距离减去当前距离小于step，就直接跳到目标距离
+            }
+        },20);
+    }
+</script>
+</body>
+</html>

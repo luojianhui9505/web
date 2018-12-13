@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            position: absolute;
+            left: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="动起来" id="btn">
+<div id="dv"></div>
+<script>
+   function speedAnimate(element,target) {
+       clearInterval(element.timeId);
+       element.timeId=setInterval(function () {
+           var current=element.offsetLeft;
+           var step=10;
+           if (current<=target){
+               current+=step;
+               element.style.left=current+"px";
+           }else{
+               clearInterval(element.timeId);
+           }
+
+       },20)
+   }
+   document.getElementById("btn").onclick=function () {
+       speedAnimate(document.getElementById("dv"),1000);
+   }
+</script>
+</body>
+</html>

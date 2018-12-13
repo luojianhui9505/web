@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border: 1px solid #ffffff;
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 500px;
+            cursor: pointer;
+            margin: 100px auto;
+        }
+        thead tr {
+            background-color: blue;
+        }
+        td {
+            border: 1px solid #cccccc;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+           font-weight: 700;
+            font-family: 微软雅黑;
+        }
+    </style>
+</head>
+<body>
+<div class="dv">
+
+    <table>
+        <caption style="font-family: 微软雅黑;font-size:30px;font-weight: 700">这是一个表格</caption>
+        <!--表头-->
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>课程</th>
+            <th>成绩</th>
+        </tr>
+        </thead>
+        <!--主题-->
+        <tbody id="main">
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>罗建辉</td>
+            <td>罗建辉</td>
+            <td>罗建辉</td>
+            <td>罗建辉</td>
+        </tr>
+        <tr>
+            <td>语文</td>
+            <td>语文</td>
+            <td>语文</td>
+            <td>语文</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>100</td>
+            <td>100</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>杨柳</td>
+            <td>杨柳</td>
+            <td>杨柳</td>
+            <td>杨柳</td>
+        </tr>
+        <tr>
+            <td>数学</td>
+            <td>数学</td>
+            <td>数学</td>
+            <td>数学</td>
+        </tr>
+        <tr>
+            <td>150</td>
+            <td>150</td>
+            <td>150</td>
+            <td>150</td>
+        </tr>
+        </tbody>
+
+    </table>
+    <script>
+        var trObj=document.getElementById("main").children;
+        for (var i=0;i<trObj.length;i++){
+            trObj[i].style.backgroundColor=i%2==0?"red":"green";
+            // 定义一个空字符串,来存储鼠标进去之前的颜色
+            var lastColor="";
+            trObj[i].onmouseover=function () {
+                // 把颜色值先存储在lastColor里面
+                lastColor=this.style.backgroundColor;
+                this.style.backgroundColor="yellow";
+            };
+            trObj[i].onmouseout=function () {
+                // 鼠标离开时恢复刚开始的颜色
+                this.style.backgroundColor=lastColor;
+            }
+
+        }
+    </script>
+</div>
+</body>
+</html>

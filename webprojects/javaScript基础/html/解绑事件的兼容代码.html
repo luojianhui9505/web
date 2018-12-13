@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="绑定按钮" id="btn">
+<input type="button" value="解绑按钮" id="btn1">
+<script>
+    // 绑定事件的兼容
+    function addEventListener(element,type,fn) {
+        if (element.addEventListener){
+            element.addEventListener(type,fn,false);
+        }else if (element.attachEvent){
+            element.attachEvent("on"+type,fn);
+        }else{
+            element["on"+type]=fn;
+        }
+    };
+    // 解绑事件的兼容
+    function removeEventListener(element,type,fnName) {
+        if (element.removeEventListener){
+            element.removeEventListener(type,fnName,false);
+        }else if (element.dettachEvent){
+            element.dettachEvent("on"+type,fnName);
+        }else{
+            element["on"+type]=null;
+        }
+    };
+    function f1() {
+        console.log("我是第一个");
+    };
+    function f2(){
+        console.log("我是第二个");
+    }
+   addEventListener(document.getElementById("btn"),"click",f1);
+    addEventListener(document.getElementById("btn"),"click",f2);
+   document.getElementById("btn1").onclick=function () {
+       removeEventListener(document.getElementById("btn"),"click",f1);
+   }
+</script>
+</body>
+</html>

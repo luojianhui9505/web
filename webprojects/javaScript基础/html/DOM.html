@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .cls {
+            width:300px;
+            height: 300px;
+            background-color:black;
+        }
+    </style>
+</head>
+
+<script>
+    // 事件响应的顺序：1、获取事件   2、触发事件   3、响应事件
+    // 按钮：事件源   点击：事件名字   被点了：触发了   弹框了：响应了。
+</script>
+
+<body>
+<!--按钮事件-->
+<!--html代码-->
+<input type="button" value="显示效果" id="btn">
+<!--js代码-->
+<script>
+    // 最终的点击按钮弹出对话框的代码
+    // 根据id属性的值从整个文档中获取这个元素或者这个标签
+     var btnObj=document.getElementById("btn");
+     // 为该标签或者元素注册点击事件,添加事件处理函数
+    btnObj.onclick=function ()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 {
+        // 响应事件
+        alert("哈哈，我又变帅了");
+    };
+</script>
+
+<!--点击按钮显示图片-->
+<input type="button" value="显示图片" id="picture">
+<img src="" alt="" id="photo">
+<script>
+    // 根据id属性从整个文档中获取这个元素或者这个标签
+    var buttonEven=document.getElementById("picture");
+    // 为该标签注册点击事件，添加事件处理函数
+    buttonEven.onclick=function () {
+        // 根据id属性从整个文档中获取这个标签
+        var im=document.getElementById("photo");
+        // 为这个标签添加属性
+       im.src="images/banner.jpg";
+       im.width="300";
+       im.height="400";
+    };
+</script>
+
+
+<!--点击按钮改变p标签里面的内容-->
+<input type="button" value="点我改变内容" id="change">
+<p id="content">我是一个p标签</p>
+<script>
+    // 根据id获取按钮，为按钮注册点击事件，添加事件处理函数
+    document.getElementById("change").onclick=function () {
+        // 获取到这个id的后面一般都是点要改变的属性
+            document.getElementById("content").innerText="这是一个p标签";
+    };
+</script>
+
+
+<!--点击按钮修改a标签的地址和热点文字-->
+<input type="button" value="点我改变内容" id="m1">
+<a id="m2" href="https://fanyi.baidu.com">百度翻译</a>
+<script>
+    // 根据属性找到这个按钮，为这个按钮注册点击事件，添加事件处理函数
+    var obj=document.getElementById("m1").onclick=function () {
+        // 根据id找到这个元素
+        var obj1=document.getElementById("m2");
+        obj1.href="https://baidu.com.cn";
+        obj1.innerText="百度";
+
+    }
+    
+</script>
+
+
+<!--改变所有p标签里面的内容-->
+<input type="button" value="点我" id="m3">
+<p>哈哈，我是罗建辉</p>
+<p>哈哈，我是罗建辉</p>
+<p>哈哈，我是罗建辉</p>
+<p>哈哈，我是罗建辉</p>
+<p>哈哈，我是罗建辉</p>
+<script>
+    // 根据id找到这个按钮，为这个按钮注册点击事件，添加事件处理函数
+    document.getElementById("m3").onclick=function () {
+        var obj2=document.getElementsByTagName("p");
+        // 循环遍历找p
+        for (var i=0;i<obj2.length;i++){
+            // 每个p标签设置文字
+            obj2[i].innerText="我们都是好孩子";
+        }
+    };
+</script>
+
+
+
+<!--改变图片的alt,和title值-->
+<input type="button" value="显示效果" id="m4" />
+<img src="images/computer.jpg" alt="没有正确打开图片" title="这是一个图片">
+<script>
+    document.getElementById("m4").onclick=function () {
+        var objs1=document.getElementsByTagName("img");
+        objs1[0].alt="正确打开了图片";
+        objs1[0].title="这不是一张图片";
+    };
+</script>
+
+<!--改变所有文本框的值-->
+<input type="button" value="点我改变文本框的值" id="btn"><br>
+<input type="text" value="" /></br>
+<input type="text" value="" /></br>
+<input type="text" value="" /></br>
+<input type="text" value="" /></br>
+<input type="text" value="" /></br>
+<script>
+    document.getElementById("btn").onclick=function () {
+        var inputs=document.getElementsByTagName("input");
+        for (var i=0;i<inputs.length;i++){
+            if (inputs[i].type!="button"){
+                inputs[i].value="我被改变了";
+            }
+        }
+    };
+</script>
+
+<!--点击每张图片弹出对话框-->
+<img src="images/1.png" alt="">
+<img src="images/2.png" alt="">
+<img src="images/bg.png" alt="">
+<script>
+    // 根据标签的名字获取图片标签，分别注册点击事件
+    var imges=document.getElementsByTagName("img");
+    // 循环遍历数组，获取每个图片标签，注册点击事件，添加事件处理函数
+    for (var i=0;i<imges.length;i++){
+        imges[i].onclick=function () {
+            alert("我被点了");
+        }
+    }
+</script>
+
+
+<!--点击按钮，改变input里面的所有属性-->
+<input type="button" value="按钮" id="btn3">
+<script>
+    var obj=document.getElementById("btn");
+    obj.onclick=function () {
+        this.value="我是按钮";
+        this.type="text";
+        this.id="btn1";
+    }
+</script>
+
+
+<!--点击图片，改变图片的大小-->
+<img src="1.jpg" alt="" id="im">
+<script>
+    var obj=document.getElementById("im");
+    obj.onclick=function () {
+        obj.width="300";
+        obj.height="200";
+    }
+</script>
+
+
+
+<!--按钮的排他功能-->
+<input type="button" value="没怀孕" />
+<input type="button" value="没怀孕" />
+<input type="button" value="没怀孕" />
+<input type="button" value="没怀孕" />
+<input type="button" value="没怀孕" />
+<input type="button" value="没怀孕" />
+<script>
+    // 根据标签，找到所有的按钮，分别注册点击事件，这里返回的是一个数组
+    var obg=document.getElementsByTagName("input");
+    // 循环遍历所有的按钮
+    for(var i=0;i<obg.length;i++){
+        // 为每个按钮都要注册点击事件
+        obg[i].onclick=function () {
+            // 点击时，先把所有的按钮的value设置为默认值，没有怀孕
+            for(var j=0;j<obg.length;j++){
+                obg[j].value="没怀孕";
+            }
+            // 把当前被点击了的按钮设置为怀孕了
+            this.value="怀孕了";//这里必须是this，用obg[i]是不行的，因为for循环在页面加载完毕时就执行结束了，就相当于已经把所有的按钮都执行了一遍，此时的i就应该是obg.length，就不再返回的数组中，再点击就不会有效果事件在触发的时候执行
+        };
+    }
+</script>
+
+
+<!--点击图片修改路径-->
+<a id="ak" href="images/1.png"><img src="images/2.png" alt="" id="im1"></a>
+<script>
+    document.getElementById("im1").onclick=function () {
+        // 将路径修改
+        this.src=document.getElementById("ak").href;
+        return false;
+    }
+</script>
+
+
+<!--点击按钮改变图片-->
+<input type="button" value="改变图片" id="btn0">
+<img src="1.jpg" alt="" id="im3">
+<script>
+    function myWay(id) {
+        return document.getElementById(id);
+    }
+    myWay("btn0").onclick=function () {
+        myWay("im3").src="images/2.png";
+    }
+</script>
+
+
+<!--点击按钮选择资自己的性别-->
+<!--radio是单选的意思-->
+<input type="button" value="选择性别" id="btn4">
+<input type="radio" value="1" name="sex" id="per" />男
+<input type="radio" value="2" name="sex" id="per2"/>女
+<input type="radio" value="3" name="sex" id="per1" />人妖
+
+<script>
+    function myChoose(id) {
+        return document.getElementById(id);
+    }
+    myChoose("btn4").onclick=function () {
+        // 这里即使写三个也智能选择一个
+        myChoose("per").checked=true;
+        myChoose("per1").checked=true;
+        myChoose("per2").checked=true;
+    };
+</script>
+
+
+
+<!--点击按钮，选择自己的兴趣-->
+<!--checkbox是多选的意思-->
+<input type="button" value="选择自己的兴趣" id="btn5">
+<input type="checkbox" value="1" name="interest" id="s1" />打篮球
+<input type="checkbox" value="1" name="interest" id="s2" />打乒乓球
+<input type="checkbox" value="1" name="interest" id="s3" />打羽毛球
+<input type="checkbox" value="1" name="interest" id="s4" />唱歌
+<input type="checkbox" value="1" name="interest" id="s5" />下棋
+<input type="checkbox" value="1" name="interest" id="s6" />旅游
+<script>
+    // 函数的封装
+    function myInterest(id) {
+        return document.getElementById(id);//根据id找到对应的标签或者元素
+    }
+    // 为按钮注册点击事件，添加事件处理函数
+    myInterest("btn5").onclick=function () {
+        myInterest("s1").checked=true;
+        myInterest("s2").checked=true;
+        myInterest("s3").checked=true;
+        myInterest("s4").checked=true;
+        myInterest("s5").checked=true;
+        myInterest("s6").checked=true;
+    }
+</script>
+
+
+<!--点击按钮，选择下拉框中的相关属性-->
+<input type="button" value="选择兴趣爱好" id="qq">
+<select name="" id="">
+    <option value="#">篮球</option>
+    <option value="#" id="s7">乒乓球</option>
+    <option value="#">羽毛球</option>
+    <option value="#">台球</option>
+    <option value="#">棒球</option>
+    <option value="#">足球</option>
+</select>
+<script src="../js/common.js"></script>
+<script>
+    myCommon("qq").onclick=function () {
+        myCommon("s7").selected=true;
+    }
+</script>
+
+
+<!--点击按钮，改变文本域中的内容，其中有disabled为禁用，readonly为只读，就是不可以修改，删除，添加-->
+<textarea name="" id="tt" cols="20" rows="10" style="vertical-align: middle" readonly>
+    佛说：罗建辉是一个帅哥
+    长命百岁
+    家财万贯
+    身体健康
+    事事顺心
+</textarea>
+<input type="button" value="提交" id="ww">
+<!--调用js下面的common.js文件-->
+<script src="../js/common.js"></script>
+<script>
+    myCommon("ww").onclick=function () {
+        myCommon("tt").value="哈哈，我又变帅了"
+    }
+</script>
+
+
+
+<!--点击按钮设置div的样式-->
+<input type="button" value="点我改变样式" id="q1">
+<div id="e1" style="width: 200px; height: 200px; background-color: #cccccc"></div>
+<script src="../js/common.js"></script>
+<script>
+    myCommon("q1").onclick=function () {
+        myCommon("e1").style.width="300px";
+        myCommon("e1").style.height="300px";
+        myCommon("e1").style.backgroundColor="deeppink"
+    }
+</script>
+
+
+<!--点击按钮显示和隐藏div-->
+<input type="button" value="显示" id="d1">
+<div id="d2" style="width: 300px; height: 300px; background-color:yellow "></div>
+<script src="../js/common.js"></script>
+<script>
+    myCommon("d1").onclick=function () {
+        if (this.value==="显示"){
+            myCommon("d2").style.display="block";
+            this.value="隐藏";
+        } else if(this.value==="隐藏"){
+            myCommon("d2").style.display="none";
+            this.value="显示";
+        }
+    };
+</script>
+
+
+
+<!--通过类样式实现div的显示和隐藏-->
+<input type="button" value="显示" id="r1">
+<div id="r2"></div>
+<script src="../js/common.js"></script>
+<script>
+    myCommon("r1").onclick=function () {
+        if (myCommon("r2").className!="cls"){
+            // 现在是显示状态，按钮上就应该写的是隐藏。
+            myCommon("r2").className="cls";//点击按钮触发的时候才执行，显示出来
+            this.value="隐藏";//显示出来后按钮就变为隐藏
+        }else if(myCommon("r2").className==="cls"){//如果是显示状态，按钮就自动变为隐藏
+            // 现在是隐藏状态，按钮上写的就应该是显示
+            myCommon("r2").className="";//点击隐藏时触发这行代码
+            this.value="显示";
+        }
+    };
+</script>
+
+
+
+<!--点击按钮禁用文本框-->
+<input type="button" value="禁用文本框" id="btn7">
+<input type="text" value="我是最帅的" id="btn1">
+<script src="../js/common.js"></script>
+<script>
+    // 根据id找到按钮，为按钮注册点击事件，添加事件处理函数
+    myCommon("btn7").onclick=function () {
+        myCommon("btn1").disabled=true;
+    }
+</script>
+
+
+<!--点击按钮改变背景颜色-->
+<input type="button" value="变色" id="btn9">
+<ul id="i1">
+    <li>苹果</li>
+    <li>香蕉</li>
+    <li>橘子</li>
+    <li>葡萄</li>
+    <li>荔枝</li>
+</ul>
+<script src="../js/common.js"></script>
+<script>
+    myCommon("btn9").onclick=function () {
+        myCommon("i1").style.backgroundColor="yellow";
+    }
+</script>
+
+
+
+<!--阻止超链接跳转第一种方法-->
+<a href="http://baidu.com.cn" onclick="alert('哈哈');return false" >百度</a>
+
+
+
+<!--阻止超链接跳转第二种方法-->
+<script>
+    function f1() {
+        alert("嘎嘎");
+        return false;
+    }
+</script>
+<a href="http://baidu.com.cn" onclick="return f1()">百度</a>
+
+
+<!--阻止超链接跳转最优方法-->
+<a href="http://baidu.com.cn" id="ak1">百度</a>
+<script>
+    document.getElementById("ak1").onclick=function () {
+        alert("hello world!");
+        return false;
+    }
+</script>
+
+
+<!--点击小图显示大图-->
+<!--图片地址赋给href并不会显示出来，只是超链接而已，什么东西赋值给href都是超链接-->
+<a href="images/pic2.jpg" id="l1"><img src="1.jpg" alt=""></a>
+<img src="" alt="" id="l2">
+<script src="../js/common.js"></script>
+<script>
+    myCommon("l1").onclick=function () {
+        myCommon("l2").src=this.href;//超链接是图片地址，点击超链接时，赋给src转为一张图片显示出来
+        return false;
+    }
+</script>
+</body>
+</html>

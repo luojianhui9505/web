@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<script>
+    // 可以为一个按钮添加多个响应事件，谷歌和火狐支持，ie8不支持
+    document.getElementById("btn").addEventListener("click", function () {
+        console.log("哦")
+
+    },false);
+    document.getElementById("btn").addEventListener("click", function () {
+        console.log("我是罗建辉")
+
+    },false)
+</script>
+</body>
+</html>

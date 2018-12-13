@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function f1(fn){
+        setInterval(function () {
+            console.log("定时器开始");
+            fn();//函数的调用
+           console.log("定时器结束");
+        },1000)
+    }
+ f1(function () {
+     console.log("我一定要学号前端");
+ });
+    // f1(f2);
+</script>
+</body>
+</html>

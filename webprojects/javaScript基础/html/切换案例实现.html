@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/base.css">
+</head>
+<body>
+<div id="box" class="switch">
+    <div class="hd">
+        <span class="current">体育</span>
+        <span>娱乐</span>
+        <span>新闻</span>
+        <span>综合</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current">我是体育模块</li>
+            <li>我是娱乐模块</li>
+            <li>我是新闻模块</li>
+            <li>我是综合模块</li>
+        </ul>
+    </div>
+</div>
+<script src="../js/common.js"></script>
+<script>
+    // 获取最外面的div
+    var box=myCommon("box");
+    // 获取里面第一个div
+    var firstDiv=document.getElementsByClassName("hd");
+    // 获取里面第二个div
+    var secondDiv=document.getElementsByClassName("bd");
+    // 获取所有的li标签
+    var allLi=document.getElementsByTagName("li");
+    // 获取所有的span标签
+    var allSpan=document.getElementsByTagName("span");
+    // 循环遍历的方式添加点击事件
+    for (var i=0;i<allSpan.length;i++){
+        // 为每一个span标签添加索引,方便后面点击每一个span时的模块一一对应
+        allSpan[i].setAttribute("index",i);
+        // 为每一个span标签添加点击事件
+        allSpan[i].onclick=function () {
+            // 点击时首先所有的span标签的类样式全部移除
+            for (var j=0;j<allSpan.length;j++){
+                allSpan[j].removeAttribute("class");
+            }
+            // 然后为当前点击的span添加类样式
+            this.className="current";
+            // 获取当前点击span的索引值
+            var num=this.getAttribute("index");
+            // 循环遍历每一个li标签
+            for (var k=0;k<allLi.length;k++){
+                // 先将所有li标签的类样式移除
+                allLi[k].removeAttribute("class");
+            }
+            // 根据当前点击的span标签所对应的索引值找到对应位置的li标签,并把当前li标签的类名改为current
+            allLi[num].className="current";
+        };
+    }
+</script>
+</body>
+</html>

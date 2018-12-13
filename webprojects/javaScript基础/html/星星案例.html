@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 600px;
+            height: 600px;
+            border: 1px solid #db7078;
+            background-color: black;
+            position: relative;
+        }
+        span {
+            font-size: 35px;
+            color: yellow;
+            /*对于top和left属性position：absolute是必须的，只有这样这两个属性才起作用*/
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="闪起来" id="btn">
+<div id="dv"></div>
+<script>
+    document.getElementById("btn").onclick=function () {
+        document.getElementById("dv").innerHTML="<span>☆</span>";
+        setInterval(function () {
+            var x=parseInt(Math.random()*600);
+            var y=parseInt(Math.random()*600);
+            document.getElementById("dv").firstElementChild.style.top=x+"px";
+            document.getElementById("dv").firstElementChild.style.left=y+"px";
+        },0.1)
+    }
+</script>
+</body>
+</html>

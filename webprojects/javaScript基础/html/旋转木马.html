@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            width:1200px;
+            margin:100px auto;
+        }
+        .slide {
+            height:500px;
+            position: relative;
+        }
+        .slide li{
+            /*脱标，不占用位置，所以图片都会重叠在一起*/
+            position: absolute;
+            left:200px;
+            top:0;
+            list-style: none;
+        }
+        .slide li img{
+            width:100%;
+        }
+        .arrow{
+            opacity: 0;
+        }
+        .prev,.next{
+            width:76px;
+            height:112px;
+            position: absolute;
+            top:50%;
+            margin-top:-56px;
+            background: url(images/prev.png) no-repeat;
+            z-index: 99;
+        }
+        .next{
+            right:0;
+            background: url(images/next.png) no-repeat ;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+    function getStyle(element,attr) {
+        return window.getComputedStyle?window.getComputedStyle(element,null)[attr]:element.currentStyle[attr];
+    }
+    function animate(element,json,fn) {
+        clearInterval(element.timeId);
+       element.timeId=setInterval(function () {
+           var flag=true;
+           for (var attr in json){
+               if (attr=="opacity"){
+                   var current=getStyle(element,attr)*100;
+                   var target=json[attr]*100;
+                   var step=(target-current)/10;
+                   step=step>0?Math.ceil(step):Math.floor(step);
+                   current+=step;
+                   element.style[attr]=current/100;
+               }else if (attr=="zIndex"){
+                   element.style[attr]=json[attr];
+               } else{
+                   var current=parseInt(getStyle(element,attr));
+                   var target=json[attr];
+                   var step=(target-current)/10;
+                   step=step>0?Math.ceil(step):Math.floor(step);
+                   current+=step;
+                   element.style[attr]=current+"px";
+               }
+               if (current!=target){
+                   flag=false;
+               }
+           }
+           if (flag){
+               clearInterval(element.timeId);
+               if (fn){
+                   fn();
+               }
+           }
+       },20)
+    }
+   var config=[
+       {
+       width: 400,
+       top: 20,
+       left: 50,
+       opacity: 0.2,
+       zIndex: 2
+   },//0
+       {
+           width: 600,
+           top: 70,
+           left: 0,
+           opacity: 0.8,
+           zIndex: 3
+       },//1
+       {
+           width: 800,
+           top: 100,
+           left: 200,
+           opacity: 1,
+           zIndex: 4
+       },//2
+       {
+           width: 600,
+           top: 70,
+           left: 600,
+           opacity: 0.8,
+           zIndex: 3
+       },//3
+       {
+           width: 400,
+           top: 20,
+           left: 750,
+           opacity: 0.2,
+           zIndex: 2
+       }//4
+   ];
+    // 页面加载事件
+    window.onload=function () {
+        var flag=true;//假设所有的动画都执行完毕---锁；
+       var list=document.getElementById("slide").getElementsByTagName("li");
+       function assign() {//函数封装，方便后面调用
+           // 让所有的图片在指定位置散开
+           for (var i=0;i<list.length;i++){
+               animate(list[i],config[i],function () {
+                   flag=true;//点击时所有图片都重新分配了，说明这一个动画执行完毕，flag就变为true，再点击时flag是true就会继续执行。
+                   // 无伦怎么点都要等到上一次动画执行完毕后才会执行下一次动画
+               });
+           }
+       }
+       assign();
+        document.getElementById("wrap").onmouseover=function () {
+            animate(document.getElementById("arrow"),{"opacity":1});
+        };
+        document.getElementById("wrap").onmouseout=function () {
+            animate(document.getElementById("arrow"),{"opacity":0});
+        };
+        document.getElementById("arrLeft").onclick=function () {
+            if (flag){
+                flag=false;
+                // unshift向数组中的第一个元素前面插入新的元素，返回值是插入后的程度。pop删除数组中的最后一个元素，返回值是删除的元素的值
+                config.unshift(config.pop());
+                assign();//调用函数，重新分配
+            }
+        };
+        document.getElementById("arrRight").onclick=function () {
+            if (flag){
+                flag=false;
+                // push向数组中的最后一个元素后面插入新的元素，shift删除数组中的第一个元素返回值是删除元素的值
+                config.push(config.shift());
+                assign();
+            }
+        };
+    }
+</script>
+<div class="wrap" id="wrap">
+    <div class="slide" id="slide">
+        <ul>
+            <li><a href="#"><img src="images/slidepic1.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic2.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic3.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic4.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic5.jpg" alt=""/></a></li>
+        </ul>
+        <div class="arrow" id="arrow">
+            <a href="javascript:;" class="prev" id="arrLeft"></a>
+            <a href="javascript:;" class="next" id="arrRight"></a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 上面的这两个是常用的
+document.getElementById("id属性的值")//返回一个元素对象
+document.getElementsByTagName("标签名字");//返回的是一个伪数组，里面保存了多个DOM对象
+
+
+// 下面的几个，有的浏览器不支持.
+document.querySelector("选择器名字")//返回一个元素对象
+document.querySelectorAll("选择器名字")//返回的是一个伪数组，里面保存了多个DOM对象,例如id="btn"则里面应该写"#btn",class="btn"里面写".btn",主要有标签选择器,类选择器,id选择器常用
+document.getElementsByClassName("class属性的值");//返回的是一个伪数组，里面保存了多个DOM对象
+document.getElementsByName("name属性的值");//返回的是一个伪数组，里面保存了多个DOM对象
+</script>
+</body>
+</html>

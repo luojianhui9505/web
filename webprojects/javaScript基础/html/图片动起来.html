@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       #dv {
+            position: absolute;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="动起来" id="btn">
+<input type="button" value="停止" id="btn1">
+<div id="dv">
+    <img src="images/1.jpg" alt="">
+    <img src="images/2.jpg" alt="">
+</div>
+<script>
+    document.getElementById("btn").onclick=function () {
+        timed=window.setInterval(function () {//不能用var声明变量，因为局部变量外面不能调用
+        var x=parseInt(Math.random()*101);
+        var y=parseInt(Math.random()*101);
+        document.getElementById("dv").style.top=x+"px";
+        document.getElementById("dv").style.left=y+"px";
+        },100);
+    };
+    document.getElementById("btn1").onclick=function () {
+        window.clearInterval(timed);
+    };
+</script>
+</body>
+</html>

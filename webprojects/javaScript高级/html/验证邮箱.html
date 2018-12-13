@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<lable>请输入你的邮箱：</lable>
+<input type="text" value="" id="email">
+<script>
+    // 注册光标离开事件
+    document.getElementById("email").onblur=function () {
+        // 判断输入的是不是邮箱
+        var reg=/^[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}$/;
+        if (reg.test(this.value)){
+            document.getElementById("email").style.backgroundColor="green";
+        }else{
+            document.getElementById("email").style.backgroundColor="red";
+        }
+    }
+</script>
+</body>
+</html>

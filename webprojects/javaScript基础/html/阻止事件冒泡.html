@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #btn1{
+            width: 300px;
+            height: 200px;
+            background-color: red;
+        }
+        #btn2{
+            width: 250px;
+            height: 150px;
+            background-color: green;
+        }
+        #btn3{
+            width: 200px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="btn1">
+    <div id="btn2">
+        <div id="btn3"></div>
+    </div>
+</div>
+<script src="../js/common.js"></script>
+<!--方法一-->
+<script>
+    myCommon("btn1").onclick=function () {
+        console.log("我是第一个div");
+    };
+    myCommon("btn2").onclick=function () {
+        console.log("我是第二个div");
+        window.event.cancelBubble=true;
+    };
+    myCommon("btn3").onclick=function () {
+        console.log("我是第三个div");
+        window.event.cancelBubble=true;
+    };
+</script>
+<!--方法二-->
+<script>
+    myCommon("btn1").onclick=function (e) {
+        console.log("我是第一个div");
+    };
+    myCommon("btn2").onclick=function (e) {
+        console.log("我是第二个div");
+        e.stopPropagation();//其中e是事件参数对象
+    };
+    myCommon("btn3").onclick=function (e) {
+        console.log("我是第三个div");
+        e.stopPropagation();
+    }
+</script>
+</body>
+</html>

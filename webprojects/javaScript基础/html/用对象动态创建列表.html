@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 600px;
+            height: 600px;
+            border: 1px solid #cc0000;
+        }
+        ul {
+            cursor: pointer;
+        }
+        li {
+            list-style: none;
+        }
+    </style>
+
+</head>
+<body>
+
+<input type="button" value="这是一个按钮" id="btn">
+<div id="dv"></div>
+<script src="../js/common.js"></script>
+<script>
+    // 这里变量用name不行
+    var arr=["乔峰","关羽","张飞","刘备","赵子龙","貂蝉","吕布","程咬金","鲁班七号","后裔","狄仁杰","孙尚香","蔡文姬","项羽","虞姬","小乔","大乔","兰陵王","花木兰","周瑜"];
+    // 根据id找到按钮，为按钮注册点击事件，添加事件处理函数
+    myCommon("btn").onclick=function () {
+        // 创建ul标签
+        var ulObjs=document.createElement("ul");
+        // 在div标签里面追加ul标签
+        myCommon("dv").appendChild(ulObjs);
+        // 循环遍历添加li标签，根据数组的长度确定要创建多少个li标签
+        for (var i=0;i<arr.length;i++){
+            var liObjs=document.createElement("li");
+            // 在每一个li标签之间添加对应的名字
+            liObjs.innerHTML=arr[i];
+            // 将li标签追加到ul标签中
+            ulObjs.appendChild(liObjs);
+
+            // 注册鼠标进入事件
+            liObjs.onmouseover=onmouseoverhandle;//事件赋值给一个命名函数,因为在for循环里面为了节省空间，不然直接添加匿名函数会循环一次添加一次，每一个li都会指向不同的空间
+            // 如果添加了命名函数，那么每一个li都会指向同一个空间
+            // 注册鼠标离开事件
+            liObjs.onmouseout=onmouseouthandle;
+        }
+        // 如果在循环里面添加事件处理函数，那么就用命名函数，如果在循环外面，就可以用匿名函数
+    };
+    function onmouseoverhandle() {
+        this.style.backgroundColor="pink"
+    };
+    function onmouseouthandle() {
+        this.style.backgroundColor=""
+    }
+</script>
+</body>
+</html>

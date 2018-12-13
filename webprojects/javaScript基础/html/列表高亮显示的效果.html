@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul li {
+            list-style: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+<ul id="list">
+    <li>苹果</li>
+    <li>苹果</li>
+    <li>苹果</li>
+    <li>苹果</li>
+    <li>苹果</li>
+</ul>
+<script src="../js/common.js"></script>
+<script>
+    // 注意一个问题就是，这不是一个点击事件，而是将鼠标光标放上去和拿开的事件，所以没有onclick
+    var ls=myCommon("list").getElementsByTagName("li");
+    for(var i=0;i<ls.length;i++){
+        // 为li注册鼠标进入事件
+        ls[i].onmouseover=function () {
+            this.style.backgroundColor="pink";
+        };
+        // 为li注册鼠标离开事件
+        ls[i].onmouseout=function () {
+            this.style.backgroundColor="";
+        };
+    }
+</script>
+</body>
+</html>

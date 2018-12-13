@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    img {
+        position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+      }
+    </style>
+</head>
+<body>
+<img src="meimei/00_00.jpg" alt="" id="im">
+<script>
+
+   function f1(){
+       var dt=new Date();
+       var hour=dt.getHours();
+       var second=dt.getSeconds();
+       hour=hour<10?"0"+hour:hour;
+       second=second<10?"0"+second:second;
+       document.getElementById("im").src="meimei/"+hour+"_"+second+".jpg"
+   }
+   f1();
+   setInterval(f1,1000);
+</script>
+</body>
+</html>

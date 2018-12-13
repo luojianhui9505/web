@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #6e6568;
+            position: relative;
+            /*background-color:#e5d790;*/
+        }
+        ul {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        li {
+            width: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<div id="dv"></div>
+<script>
+    var arr=["杨过","小龙女","张无忌","郭靖","黄蓉"];
+    document.getElementById("btn").onclick=function () {
+        var str="<ul style='list-style: none;cursor: pointer'>";
+            for (var i=0;i<arr.length;i++){
+                str+="<li>"+arr[i]+"</li>";
+            }
+
+        str+="</ul>";
+            document.getElementById("dv").innerHTML=str;
+            // 注册鼠标进入事件
+        // 先找到li标签
+        var lists=document.getElementById("dv").getElementsByTagName("li");
+        // 循环遍历所有的li标签，为所有的li标签注册鼠标进入事件
+        for (var i=0;i<lists.length;i++){
+            lists[i].onmouseover=function () {
+                this.style.backgroundColor="pink";
+            };
+            lists[i].onmouseout=function () {
+                this.style.backgroundColor="";
+            };
+        } 
+    };
+</script>
+</body>
+</html>

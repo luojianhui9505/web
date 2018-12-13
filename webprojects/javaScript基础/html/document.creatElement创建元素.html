@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            border: 1px dashed #e5d790;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="这是一个按钮" id="btn">
+<div id="dv"></div>
+<script src="../js/common.js"></script>
+<script>
+    document.getElementById("btn").onclick=function () {
+        var objs=document.createElement("p");
+        setInnerText(objs,"这是一个p");
+        myCommon("dv").appendChild(objs);
+    };
+</script>
+</body>
+</html>

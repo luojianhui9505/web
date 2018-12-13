@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+          border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #000000;
+            width: 300px;
+            margin: 100px auto;
+        }
+        th,td {
+            border: 1px solid #cccccc;
+            text-align: center;
+            padding: 10px;
+        }
+        thead {
+            background-color: #cc0000;
+        }
+        tr {
+            text-align: center;
+            width: 50px;
+        }
+        tbody tr:hover{
+            cursor: pointer;
+            background-color: #6e6568;
+        }
+    </style>
+</head>
+<body>
+<div class="menu">
+    <table c>
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="hdBtn"></th>
+                <th>菜名</th>
+                <th>饭店</th>
+            </tr>
+        </thead>
+
+
+        <tbody id="dish">
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>红烧肉</td>
+        <td>罗老师</td>
+    </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>番茄炒鸡蛋</td>
+            <td>罗老师</td>
+        </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>土豆肉丝</td>
+        <td>罗老师</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>糖醋排骨</td>
+        <td>罗老师</td>
+    </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<script src="../js/common.js"></script>
+<script>
+    var hdBtn=myCommon("hdBtn");
+    var bdBut=myCommon("dish").getElementsByTagName("input");
+    hdBtn.onclick=function () {
+        for (var i=0;i<bdBut.length;i++){
+            bdBut[i].checked=this.checked;
+        }
+    };
+    for (var i=0;i<bdBut.length;i++){
+        bdBut[i].onclick=function () {
+            var flag=true;//默认全部点上的
+            // 再遍历看一下每一个看有没有没点上的
+            for (var k=0;k<bdBut.length;k++){
+                if (bdBut[k].checked===false){//如果有一个没有点上，就跳出循环，如果一直都没有经过这个判断语句，就说明是true，都是选上的
+                    flag=false;//那就返回false
+                    break;//跳出循环
+                }
+            }
+            // 最上面复选框的值就是返回的flag的值
+           hdBtn.checked=flag;
+        }
+    } 
+</script>
+</body>
+</html>
