@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证密码的弱中强</title>
+    <style>
+        /*弱*/
+        .strengthLevel0 {
+            width: 150px;
+            height: 10px;
+            border: 1px solid #cccccc;
+        }
+        /*中*/
+        .strengthLevel1 {
+            width: 60px;
+            height: 10px;
+            border: 1px solid #cccccc;
+            background-color: red;
+        }
+        /*强*/
+        .strengthLevel2 {
+            width: 100px;
+            height: 10px;
+            border: 1px solid #cccccc;
+            background-color: yellow;
+        }
+        .strengthLevel3 {
+            width: 150px;
+            height: 10px;
+            border: 1px solid #cccccc;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+        <div id="dv">
+            <lable>密码</lable>
+            <input type="text" placeholder="请输入密码" maxlength="16" id="pwd">
+        </div>
+        <div id="dv1">
+         <em>密码强度:</em>
+         <div id="strengthLevel" class="strengthLevel0"></div>
+</div>
+        <script>
+            // 根据id获取密码框的键盘抬起事件
+            document.getElementById("pwd").onkeyup=function () {
+                // if (this.value.length>=6){
+                //     // 获取的级别
+                //     var lvl=getLevel(this.value);
+                //     document.getElementById("strengthLevel").className="strengthLevel"+lvl;
+                // }else {
+                //     document.getElementById("strengthLevel").className="strengthLevel0";
+                // }
+                // 根据级别改变相应的类样式
+                document.getElementById("strengthLevel").className="strengthLevel"+(this.value.length>=6?getLevel(this.value):0);
+            };
+        //
+            // 输入密码，获取相应的级别
+            function getLevel(pwd) {
+                var lvl=0;
+                // 如果密码中有数字级别加1
+                if (/\d/.test(pwd)){
+                    lvl++;
+                }
+                // 如果密码中有字母级别加1
+                if (/[a-zA-Z]/.test(pwd)){
+                    lvl++;
+                }
+                // 如果密码中有特殊字符，级别加1
+                if (/\W/.test(pwd)){
+                    lvl++;
+                }
+                return lvl;
+            }
+        </script>
+</body>
+</html>

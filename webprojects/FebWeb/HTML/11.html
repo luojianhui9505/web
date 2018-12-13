@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>document属性使用</title>
+</head>
+<body>
+	<div>
+		<h2>在文本框中输入内容</h2>
+		<form>
+			内容：<input type=text onChange="document.my.elements[0].value=this.value;">
+		</form>
+		<form name="my">
+		结果：<input type=text onChange="document.my.forms[0].elements[0].value=this.value;">
+		</form>
+	</div>
+</body>
+</html>

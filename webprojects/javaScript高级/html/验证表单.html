@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+        }
+        label{
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+            text-align: left;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <label for="stNum" >学号</label><input type="text" id="stNum"><span></span><br />
+    <label for="userNum">姓名</label><input type="text" id="userNum"><span></span><br />
+    <label for="tel" >电话</label><input type="text" id="tel"><span></span><br />
+    <label  for="qq" id="la">QQ</label><input type="text" id="qq"><span></span><br />
+    <label for="email">邮箱</label><input type="text" id="email"><span></span><br />
+</div>
+<script>
+
+    getIputStyle(document.getElementById("stNum"),/^\d{8,12}$/);
+    getIputStyle(document.getElementById("userNum"),/^[\u4e00-\u9fa5]{2,6}$/);
+    getIputStyle(document.getElementById("tel"),/^\d{11}$/);
+    getIputStyle(document.getElementById("qq"),/^\d{5,11}$/);
+    getIputStyle(document.getElementById("email"),/^[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}$/);
+    function getIputStyle(input,reg) {
+        input.onblur=function () {
+            if (reg.test(this.value)){
+                this.style.backgroundColor="green";
+                this.nextElementSibling.innerHTML="✔";
+            }else{
+                this.style.backgroundColor="red";
+                this.nextElementSibling.innerHTML="❌";
+            }
+        }
+    }
+</script>
+</body>
+</html>

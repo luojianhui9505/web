@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        $("div").on("click mouseenter","p",function () {
+            alert("哈哈");
+        });
+        $("div").off("mouseenter");
+    });
+</script>
+        <div>
+            <p>1我是一个有事件的p</p>
+            <p>2我是一个有事件的p</p>
+            <p>3我是一个有事件的p</p>
+            <p>4我是一个有事件的p</p>
+        </div>
+</body>
+</html>

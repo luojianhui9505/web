@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .box {
+            width: 1300px;
+            height: 400px;
+            margin: 100px auto;
+        }
+        .ul {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .ul li {
+            width: 240px;
+            height: 400px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        var $li=$(".ul li");
+        for (var i=0;i<$li.length;i++){
+            $li.eq(i).css("backgroundImage","url(img/"+(i+1)+".jpg)");
+        }
+        $li.mouseenter(function () {
+            $(this).stop().animate({width:"800px"}).siblings().stop().animate({width:"100px"})
+        });
+        $li.mouseleave(function () {
+           $li.stop().animate({width:"240px"});
+        });
+    });
+</script>
+<div class="box">
+    <ul class="ul">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>

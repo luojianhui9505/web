@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .wrapper {
+            width: 1000px;
+            height: 500px;
+            margin: 100px auto;
+        }
+        .tab {
+            border: 1px solid #cccccc;
+            border-bottom: 0;
+            height: 38px;
+            width: 320px;
+            text-align: center;
+            line-height:38px;
+        }
+        .tab span {
+            margin-left: 5px;
+            font-size: 5px;
+        }
+        .tab li {
+            float: left;
+            width: 80px;
+            height: 34px;
+            cursor: pointer;
+            border-top: 4px solid #ffffff;
+        }
+        .products {
+            width: 1002px;
+            height: 475px;
+            overflow: hidden;
+            border: 1px solid #cccccc;
+        }
+        .products .main {
+            display: none;
+        }
+        .products .main.selected {
+            display: block;
+        }
+        .tab .tab-item.active {
+           border-color: red;
+        }
+    </style>
+</head>
+<body>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        $(".tab>li").mouseenter(function () {
+            // 获取当前进入的li的索引值
+            var index=$(this).index();
+            // 把当前进入的li设置active类，同时移除其他兄弟的active类
+            $(this).addClass("active").siblings().removeClass("active");
+            // 找到当前进入li的索引值所对应的div并设置selected类，同时移除它兄弟的selected类
+            $(".main").eq(index).addClass("selected").siblings().removeClass("selected");
+        });
+    });
+</script>
+<div class="wrapper">
+    <ul class="tab">
+        <li class="tab-item active">国际大牌<span>|</span></li>
+        <li class="tab-item">国妆名牌<span>|</span></li>
+        <li class="tab-item">清洁用品<span>|</span></li>
+        <li class="tab-item">男士精品</li>
+    </ul>
+    <div class="products">
+        <div class="main selected">
+            <a href="###"><img src="images/guojidapai.jpg" alt=""/></a>
+        </div>
+        <div class="main">
+            <a href="###"><img src="images/guozhuangmingpin.jpg" alt=""/></a>
+        </div>
+        <div class="main">
+            <a href="###"><img src="images/qingjieyongpin.jpg" alt=""/></a>
+        </div>
+        <div class="main">
+            <a href="###"><img src="images/nanshijingpin.jpg" alt=""/></a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            list-style: none;
+        }
+        .dv {
+            width: 150px;
+            border: 1px solid #cccccc;
+            margin: 100px auto;
+        }
+        .ul li span {
+            display: block;
+            width: 150px;
+            height: 30px;
+            border: 1px solid #cccccc;
+            cursor: pointer;
+            text-align: center;
+            line-height: 30px;
+            background-color: blue;
+        }
+        .ul li div {
+            width: 150px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<script src="jquery-1.2.3.js"></script>
+<script>
+    // 为什么可以一直点下去，因为链式方程
+    $(function () {
+        $(".span").click(function () {
+            $(this).next().show().parent().siblings().children("div").hide();
+        });
+    });
+</script>
+<div class="dv">
+    <ul class="ul">
+        <li>
+            <span  class="span">我是第一个按钮</span>
+            <div>我是第一个div</div>
+
+        </li>
+        <li>
+            <span class="span">我是第二个按钮</span>
+            <div>我是第二个div</div>
+
+        </li>
+        <li>
+            <span class="span">我是第三个按钮</span>
+            <div>我是第三个div</div>
+
+        </li>
+        <li>
+            <span class="span">我是第四个按钮</span>
+            <div>我是第四个div</div>
+
+        </li>
+    </ul>
+</div>
+</body>
+</html>

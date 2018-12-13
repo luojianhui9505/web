@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>2
+</head>
+<body>
+<script>
+    // Person的构造函数
+    function Person(name) {
+    this.name=name;
+    }
+    // 添加原型方法，实现数据共享，节省空间
+    Person.prototype.sayHi=function (x,y) {
+        console.log((x+y)+"======>"+this.name)
+    };
+    // Student的构造函数
+    function Student(name) {
+        this.name=name;
+    }
+    // 实例化对象
+    var per=new Person("男");
+    var stu=new Student("女");
+    // call和apply都可以改变this的指向，作用是相同的，但是传入参数的抒写方式不一样，call传去参数的方式是一个一个的写，而apply是以数组的方式
+    per.sayHi.call(stu,10,20);
+    per.sayHi.apply(stu,[10,20]);
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function getEveryNum(x) {
+        if (x<10){
+            return x;
+        }else if (x>=10){
+            return x%10+parseInt(getEveryNum(x/10));
+        }
+    }
+    console.log(getEveryNum(136));
+    function getFib(x) {
+        if (x===1||x===2){
+            return 1;
+        }
+        return getFib(x-1)+getFib(x-2);
+    }
+    console.log(getFib(12));
+</script>
+</body>
+</html>

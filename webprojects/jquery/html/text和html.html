@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div><p>我是一个p</p></div>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    // 和js当中的innerHtml和innerText一样
+
+    
+    // 获取标签中的内容
+    console.log($("div").html());//div标签和内容会一起打印出来
+    console.log($("div").text()); //只会打印div里面的文字内容，不会打印里面的标签
+    // 设置标签中的内容
+    $("div").html("<h1>我是标题</h1>");//设置时只会显示标签中的内容，不会显示标签中的标签
+    // $("div").text("<h1>我是标题</h1>");//设置时标签中的标签和内容会一起显示
+</script>
+</body>
+</html>
